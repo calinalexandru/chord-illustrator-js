@@ -1,4 +1,4 @@
-## 1.0.3
+## 1.0.4
 
 -  added tests 'is not null, has method chord, can generate svg'
 

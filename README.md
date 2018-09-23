@@ -78,7 +78,7 @@ console.log(chordSVG.toString());
 ![sometext](https://image.ibb.co/k9XznU/Screen_Shot_2018_09_23_at_18_33_23.png)
 
 #### release notes
-> v1.0.3
+> v1.0.4
 -  added tests 'is not null, has method chord, can generate svg'
 
 ## License
