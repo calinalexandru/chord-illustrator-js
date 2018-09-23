@@ -1,14 +1,9 @@
 # chord-illustrator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > SVG based library which illustrates finger positions of a guitar chord on a fretboard.
-> _based on: [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey_
 
-
-
-
-
+> _based on [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey)_
 
 ## Installation
-
 ```sh
 $ npm install --save chord-illustrator
 ```
@@ -16,9 +11,8 @@ $ npm install --save chord-illustrator
 ## Usage
 >*illustrates B minor*
 ```js
-const Illustrator = require('chord-illustrator');
+const ChordIllustrator = require('chord-illustrator');
 const DOMParser = require('xmldom').DOMParser;
-
 
 // https://www.w3.org/DOM/
 // html object
@@ -48,7 +42,7 @@ const chordBmOptions = {
     }]
 };
 
-const chordSVG = Illustrator.chord(container, chordBmOptions);
+const chordSVG = ChordIllustrator.chord(container, chordBmOptions);
 console.log(chordSVG.toString());
 ```
 
@@ -84,9 +78,8 @@ console.log(chordSVG.toString());
 ![sometext](https://image.ibb.co/k9XznU/Screen_Shot_2018_09_23_at_18_33_23.png)
 
 #### release notes
-> v1.0.1
-- refactored illustrator path
-- updated license type
+> v1.0.3
+-  added tests 'is not null, has method chord, can generate svg'
 
 ## License
 
