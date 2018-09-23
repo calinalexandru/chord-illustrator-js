@@ -34,6 +34,6 @@ const chordSVG = Illustrator.chord(elem, chordBmOptions);
 
 console.log(chordSVG.toString());
 
-fs.writeFile('chord.html', chordSVG.toString(), () => {
+fs.writeFile('static/chord.html', chordSVG.toString(), () => {
     console.log('chord arrived')
 });

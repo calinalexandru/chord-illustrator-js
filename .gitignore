@@ -3,3 +3,4 @@
 .sourcemaps/
 config.xml
 node_modules/
+static/
