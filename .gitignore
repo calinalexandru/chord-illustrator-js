@@ -1,0 +1,5 @@
+.editorconfig
+.idea
+.sourcemaps/
+config.xml
+node_modules/

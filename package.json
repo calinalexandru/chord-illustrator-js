@@ -1,0 +1,34 @@
+{
+  "name": "chord-illustrator",
+  "version": "1.0.0",
+  "description": "This is a JavaScript library which illustrates finger positions of a guitar chord on a fretboard.",
+  "main": "src/app.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "start": "node src/app.js",
+    "serve": "nodemon src/app.js",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calinalexandru/chord-illustrator-js.git"
+  },
+  "keywords": [
+    "chord",
+    "illustrator",
+    "generator",
+    "js",
+    "guitar"
+  ],
+  "author": "Alexandru Călin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calinalexandru/chord-illustrator-js/issues"
+  },
+  "homepage": "https://github.com/calinalexandru/chord-illustrator-js#readme",
+  "dependencies": {
+    "xmldom": "^0.1.27"
+  }
+}
