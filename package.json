@@ -1,0 +1,76 @@
+{
+  "name": "chord-illustrator",
+  "version": "1.0.0",
+  "description": "SVG based library which illustrates finger positions of a guitar chord on a fretboard.",
+  "homepage": "https://github.com/calinalexandru/chord-illustrator-js#readme",
+  "author": {
+    "name": "Alexandru Calin",
+    "email": "calinalexandru1990@gmail.com",
+    "url": "https://alexandrucalin.me/"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "chord illustrator generator node js guitar"
+  ],
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "prettier": "^1.11.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-config-xo": "^0.24.2",
+    "jest": "^23.5.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "printWidth": 90
+        }
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "precommit": "lint-staged",
+    "test": "jest"
+  },
+  "repository": "calinalexandru/chord-illustrator",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "xmldom": "^0.1.27"
+  }
+}
