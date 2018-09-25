@@ -71,7 +71,7 @@ console.log('HTML output', svg.toString());
 ![sometext](https://image.ibb.co/k9XznU/Screen_Shot_2018_09_23_at_18_33_23.png)
 
 #### release notes
-> v1.0.5
+> v1.1.0
 - moved width & height to viewBox attribute for svg container, which allows the fields to be used as input
 - added/changed new methods: **setContainer**, **setHeight**, **make**
 

@@ -1,4 +1,4 @@
-## 1.0.5
+## 1.1.0
 - moved width & height to viewBox attribute for svg container, which allows the fields to be used as input
 - added/changed **setContainer**, **setHeight**, **make**
 
