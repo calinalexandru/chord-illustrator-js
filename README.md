@@ -11,44 +11,37 @@ $ npm install --save chord-illustrator
 ## Usage
 >*illustrates B minor*
 ```js
+// import chord-illustrator & xmldom
 const ChordIllustrator = require('chord-illustrator');
 const DOMParser = require('xmldom').DOMParser;
 
+// prepare html objects
 // https://www.w3.org/DOM/
-// html object
 const document = new DOMParser().parseFromString('<html></html>');
 
-// div object
-const container = document.createElement('div');
+// 
+const ci = new ChordIllustrator(document.createElement('div'))
 
-const chordBmOptions = {
-    'title': 'Bm',
-    'statusString': ['open', 'open', 'open', 'open', 'open', 'closed'],
-    'chord': [{
-        'fret': 1,
-        'barre': {
-            'from': 1,
-            'to': 6
-        }
-    }, {
-        'fret': 2,
-        'string': 2
-    }, {
-        'fret': 3,
-        'string': 3
-    }, {
-        'fret': 3,
-        'string': 4
-    }]
-};
+const svg = ci.make({
+    name: 'Bm',
+    mutedStrings: ['yes'],
+    fingering: [
+        {
+            fret: 1,
+            barre: {from: 1, to: 5}
+        },
+        {fret: 2, string: 2},
+        {fret: 3, string: 3},
+        {fret: 3, string: 4}
+    ]
+});
 
-const chordSVG = ChordIllustrator.chord(container, chordBmOptions);
-console.log(chordSVG.toString());
+console.log('HTML output', svg.toString());
 ```
 
 > XML generated
 ```xhtml
-<svg width="215" height="133" xmlns="http://www.w3.org/2000/svg">
+<svg height="440" viewbox="0 0 215 133" xmlns="http://www.w3.org/2000/svg">
     <rect x="25" y="27" height="100" width="180" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(255, 255, 255)"/>
     <line x1="85" y1="27" x2="85" y2="127" stroke="rgb(0, 0, 0)" stroke-width="1"/>
     <line x1="145" y1="27" x2="145" y2="127" stroke="rgb(0, 0, 0)" stroke-width="1"/>
@@ -66,8 +59,8 @@ console.log(chordSVG.toString());
     <line x1="10" y1="122" x2="20" y2="132" stroke="rgb(0, 0, 0)" stroke-width="1"/>
     <line x1="20" y1="122" x2="10" y2="132" stroke="rgb(0, 0, 0)" stroke-width="1"/>
     <circle cx="55" cy="27" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
-    <circle cx="55" cy="127" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
-    <rect x="50" y="27" height="100" width="10" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
+    <circle cx="55" cy="107" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
+    <rect x="50" y="27" height="80" width="10" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
     <circle cx="115" cy="47" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
     <circle cx="175" cy="67" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
     <circle cx="175" cy="87" r="5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="rgb(0, 0, 0)"/>
@@ -78,8 +71,28 @@ console.log(chordSVG.toString());
 ![sometext](https://image.ibb.co/k9XznU/Screen_Shot_2018_09_23_at_18_33_23.png)
 
 #### release notes
-> v1.0.4
--  added tests 'is not null, has method chord, can generate svg'
+> v1.0.5
+- moved width & height to viewBox attribute for svg container, which allows the fields to be used as input
+- added/changed new methods: **setContainer**, **setHeight**, **make**
+
+> #Docs
+
+#### .setContainer(HTMLElement)
+- set the container where output will be generated.
+
+#### .make(name: string, fingering: array, mutedStrings: array)
+
+>##### @param(name: string)
+> chord name/title
+
+>##### @param(fingering: string)
+>
+
+>##### @param(mutedStrings: string)
+>from E4 to E6\
+array of max 6 items filled with ”yes/no”\
+if not specified, value will default to “open”
+
 
 ## License
 
