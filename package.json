@@ -56,7 +56,8 @@
   },
   "repository": "calinalexandru/chord-illustrator",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "verbose": false
   },
   "license": "Apache-2.0",
   "dependencies": {}
