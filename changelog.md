@@ -1,9 +1,11 @@
+## 1.2.2
+- fixed issues with barre & fret number
+
 ## 1.1.0
 - moved width & height to viewBox attribute for svg container, which allows the fields to be used as input
 - added/changed **setContainer**, **setHeight**, **make**
 
 ## 1.0.4
-
 -  added tests 'is not null, has method chord, can generate svg'
 
 ## 1.0.2
