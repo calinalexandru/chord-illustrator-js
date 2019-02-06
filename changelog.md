@@ -1,3 +1,6 @@
+## 1.2.4
+- making fretboard dynamic length based on chord data
+
 ## 1.2.2
 - fixed issues with barre & fret number
 

@@ -1,7 +1,6 @@
 # chord-illustrator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > SVG based library which illustrates finger positions of a guitar chord on a fretboard.
 
-> _based on [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey)_
 
 ## Installation
 ```sh
@@ -9,6 +8,7 @@ $ npm install --save chord-illustrator
 ```
 
 ## Usage
+
 >*illustrates B minor*
 ```js
 // import chord-illustrator & xmldom
@@ -83,14 +83,15 @@ console.log('HTML output', svg.toString());
 
 ![sometext](https://i.ibb.co/pzGZ1Db/Screen-Shot-2019-01-29-at-15-00-58.png)
 
-#### release notes
-> 1.2.2
-- fixed issues with barre & fret number
 
 > #Docs
+> *the fretboard will expand automatically based on fret numbers*
 
 #### .setContainer(HTMLElement)
 - set the container where output will be generated.
+
+#### .setHeight(height: number)
+- specify the SVG height
 
 #### .make(name: string, fingering: array, mutedStrings: array)
 
@@ -104,11 +105,15 @@ console.log('HTML output', svg.toString());
 >from E4 to E6\
 array of max 6 items filled with ”yes/no”\
 if not specified, value will default to “open”
+#### release notes
+> 1.2.4
+- making fretboard dynamic length based on chord data
 
 
 ## License
 
 Apache-2.0 © [Alexandru Calin](https://alexandrucalin.me/)
+> _originally based on [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey)_
 
 
 [npm-image]: https://badge.fury.io/js/chord-illustrator.svg
