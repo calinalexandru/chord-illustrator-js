@@ -1,3 +1,6 @@
+## 1.2.6
+- added fretboardRange as an option
+
 ## 1.2.4
 - making fretboard dynamic length based on chord data
 
