@@ -93,21 +93,30 @@ console.log('HTML output', svg.toString());
 #### .setHeight(height: number)
 - specify the SVG height
 
-#### .make(name: string, fingering: array, mutedStrings: array)
+#### .make({name: string, fingering: array, mutedStrings: array})
 
 >##### @param(name: string)
 > chord name/title
 
->##### @param(fingering: string)
->
+>##### @param(fingering: [{fret: number, string: number: finger?: number, barre?: obj}])
+> array of objects with properties as:  
+>```{fret: 5, barre: {from: 1, to: 2}}```  
+>```{fret: 6, string: 4, finger: 2}```
 
 >##### @param(mutedStrings: string)
 >from E4 to E6\
 array of max 6 items filled with ”yes/no”\
 if not specified, value will default to “open”
+
+>##### @param(fretboardRange: {start: number, end: number})
+>Specify desired fretboard length  
+>eg.```fretboardRange: {start: 1, end: 12}```
+
+>You can also use **make('Am')** as it will try to return a match found in **lib/chord/model/chord.model.js**, for now a small inventory but I will expand it in time.
+
 #### release notes
-> 1.2.4
-- making fretboard dynamic length based on chord data
+## 1.2.6
+- added fretboardRange as an option
 
 
 ## License
