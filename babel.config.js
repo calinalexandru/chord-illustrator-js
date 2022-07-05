@@ -1,5 +1,5 @@
 module.exports = {
-  presets: [['@babel/preset-env', { modules: false }]],
+  presets: [['@babel/preset-react'], ['@babel/preset-env', { modules: false }]],
   plugins: [
     // [
     //   'ramda',
@@ -7,6 +7,7 @@ module.exports = {
     //     useES: true,
     //   },
     // ],
+    ['@babel/plugin-transform-react-jsx'],
     ['@babel/plugin-transform-runtime', { regenerator: true }],
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
