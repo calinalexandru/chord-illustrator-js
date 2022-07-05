@@ -5,3 +5,4 @@ node_modules
 static/*
 es
 cjs
+mock.svg

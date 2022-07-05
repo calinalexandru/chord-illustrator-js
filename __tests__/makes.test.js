@@ -7,18 +7,13 @@ describe('basic makes', () => {
     const testChord = ChordIllustrator.make({
       name: 'Bm',
       mutedStrings: ['yes'],
-      barre: { fret: 1, from: 1, to: 5 },
       fingering: [
-        {
-          fret: 1,
-          barre: { from: 1, to: 5 },
-        },
-        { fret: 2, string: 2 },
-        { fret: 3, string: 3 },
-        { fret: 3, string: 4 },
+        { fret: 5, string: 1 },
+        { fret: 4, string: 2 },
+        { fret: 5, string: 3 },
       ],
     });
-    fs.writeFileSync('whatever.svg', testChord.toString());
+    fs.writeFileSync('mock.svg', testChord.toString());
     expect(testChord).toBe('Am');
   });
 });
