@@ -1,0 +1,6 @@
+.idea
+.vscode
+coverage
+es
+cjs
+node_modules
