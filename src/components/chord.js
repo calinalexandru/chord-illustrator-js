@@ -11,16 +11,33 @@ import {
 } from '../constants';
 import getMinFret from '../util/getMinFret';
 import getMaxFret from '../util/getMaxFret';
+import getArrayRange from '../util/getArrayRange';
 
 /* eslint-disable react/prop-types */
-export default function Chord({ name = 'Am', fingering, barre }) {
+export default function Chord({
+  name = 'Am',
+  fingering = {},
+  barre = {},
+  fretboardRange = {},
+}) {
+  const hasRange = !!Object.keys(fretboardRange).length;
+  const hasBarre = !!Object.keys(barre).length;
   const barreX = BARRE_MARGIN * (barre.fret - 1) + BARRE_START;
-  const frets = getFretboardRange(fingering);
-  const fretNumber = getMinFret(fingering);
-  const maxFret = getMaxFret(fingering);
+  const frets = hasRange
+    ? getArrayRange(fretboardRange)
+    : getFretboardRange(fingering);
+  const fretNumber = hasRange ? fretboardRange.from : getMinFret(fingering);
+  const maxFret = hasRange ? fretboardRange.to : getMaxFret(fingering);
 
   return (
-    <svg height="440" viewBox="0 0 215 141" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      style={{
+        height: '440px',
+        width: 'auto',
+      }}
+      viewBox={`0 0 ${maxFret * FRET_MARGIN + 28} 141`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
         x="25"
         y="23"
@@ -34,6 +51,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
       <g data-name="frets-container">
         {frets.map((fretKey) => (
           <line
+            key={`fret-${fretKey}`}
             data-name={`fret-${fretKey}`}
             x1={FRET_MARGIN * (fretKey - 1) + FRET_START}
             y1="20"
@@ -47,6 +65,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
       <g data-name="guitar-strings-container">
         {GUITAR_STRINGS.map((gstring) => (
           <line
+            key={`string-${gstring}`}
             x1="25"
             y1={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
             x2={FRET_MARGIN * maxFret + GUITAR_STRING_START + 2}
@@ -122,7 +141,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
           strokeWidth="1"
         />
       </g>
-      {barre && (
+      {hasBarre && (
         <g data-name="barre-container">
           <circle
             cx={barreX}
@@ -153,7 +172,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
       )}
       <g data-name="fingers-container">
         {fingering.map(({ fret = 1, string = 1 }) => (
-          <>
+          <g key={`finger-${fret}-${string}`}>
             <circle
               cx={FRET_MARGIN * (fret - 1) + BARRE_START}
               cy={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
@@ -164,6 +183,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
             />
             {string && (
               <text
+                key={`finger-circle-${fret}-${string}`}
                 x={FRET_MARGIN * (fret - 1) + BARRE_START - 3}
                 y={
                   GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START + 3
@@ -176,7 +196,7 @@ export default function Chord({ name = 'Am', fingering, barre }) {
                 {string}
               </text>
             )}
-          </>
+          </g>
         ))}
       </g>
       <text

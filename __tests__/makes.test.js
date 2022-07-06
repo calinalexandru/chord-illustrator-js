@@ -8,9 +8,11 @@ describe('basic makes', () => {
       name: 'Bm',
       mutedStrings: ['yes'],
       fingering: [
-        { fret: 5, string: 1 },
-        { fret: 4, string: 2 },
-        { fret: 5, string: 3 },
+        { fret: 1, barre: { from: 1, to: 5 } },
+        { fret: 2, string: 2 },
+        { fret: 3, string: 3 },
+        { fret: 4, string: 4 },
+        { fret: 5, string: 5 },
       ],
     });
     fs.writeFileSync('mock.svg', testChord.toString());
