@@ -16,7 +16,8 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/no-unresolved": [2, { "caseSensitive": false }],
-    "no-console": "off"
+    "no-console": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "import/resolver": {

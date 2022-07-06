@@ -9,8 +9,11 @@ import {
   GUITAR_STRING_START,
   GUITAR_STRINGS,
 } from '../constants';
+import String from '../primitives/String';
+import Fret from '../primitives/Fret';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
+import getFretPosX from '../util/getFretPosX';
 
 /* eslint-disable react/prop-types */
 export default function Chord({
@@ -52,29 +55,21 @@ export default function Chord({
       />
       <g data-name="frets-container">
         {frets.map((fretKey) => (
-          <line
+          <Fret
             key={`fret-${fretKey}`}
-            data-name={`fret-${fretKey}`}
-            x1={FRET_MARGIN * (fretKey - 1) + FRET_START}
-            y1="20"
-            x2={FRET_MARGIN * (fretKey - 1) + FRET_START}
-            y2="126"
-            strokeWidth="3"
-            stroke="#472611"
+            number={fretKey}
+            x1={getFretPosX(FRET_MARGIN, fretKey, FRET_START)}
+            x2={getFretPosX(FRET_MARGIN, fretKey, FRET_START)}
           />
         ))}
       </g>
       <g data-name="guitar-strings-container">
         {GUITAR_STRINGS.map((gstring) => (
-          <line
+          <String
             key={`string-${gstring}`}
-            x1="25"
             y1={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
             x2={FRET_MARGIN * maxFret + GUITAR_STRING_START + 2}
             y2={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
-            stroke="black"
-            style={{ opacity: 0.3 }}
-            strokeWidth="1"
           />
         ))}
       </g>

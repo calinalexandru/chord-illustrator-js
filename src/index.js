@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Chord from './components/chord';
+import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
 import barreTransform from './util/barreTransform';
 import getMinFret from './util/getMinFret';
