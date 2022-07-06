@@ -11,10 +11,11 @@ import {
 } from '../constants';
 import String from '../primitives/String';
 import Fret from '../primitives/Fret';
+import Barre from '../primitives/Barre';
+import Neck from '../primitives/Neck';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
 import getFretPosX from '../util/getFretPosX';
-import Barre from '../primitives/Barre';
 
 /* eslint-disable react/prop-types */
 export default function Chord({
@@ -76,69 +77,7 @@ export default function Chord({
         ))}
       </g>
       <g data-name="guitar-neck-container">
-        <circle
-          cx="15"
-          cy="23"
-          r="5"
-          stroke="rgb(0, 0, 0)"
-          strokeWidth="1"
-          style={{ opacity: 0.3 }}
-          fill="rgb(255, 255, 255)"
-        />
-        <circle
-          cx="15"
-          cy="43"
-          r="5"
-          stroke="rgb(0, 0, 0)"
-          strokeWidth="1"
-          style={{ opacity: 0.3 }}
-          fill="rgb(255, 255, 255)"
-        />
-        <circle
-          cx="15"
-          cy="63"
-          r="5"
-          stroke="rgb(0, 0, 0)"
-          strokeWidth="1"
-          style={{ opacity: 0.3 }}
-          fill="rgb(255, 255, 255)"
-        />
-        <circle
-          cx="15"
-          cy="83"
-          r="5"
-          stroke="rgb(0, 0, 0)"
-          strokeWidth="1"
-          style={{ opacity: 0.3 }}
-          fill="rgb(255, 255, 255)"
-        />
-        <circle
-          cx="15"
-          cy="103"
-          r="5"
-          stroke="rgb(0, 0, 0)"
-          strokeWidth="1"
-          style={{ opacity: 0.3 }}
-          fill="rgb(255, 255, 255)"
-        />
-        <line
-          x1="10"
-          y1="118"
-          x2="20"
-          y2="128"
-          stroke="rgb(0, 0, 0)"
-          style={{ opacity: 0.3 }}
-          strokeWidth="1"
-        />
-        <line
-          x1="20"
-          y1="118"
-          x2="10"
-          y2="128"
-          stroke="rgb(0, 0, 0)"
-          style={{ opacity: 0.3 }}
-          strokeWidth="1"
-        />
+        <Neck />
       </g>
       {hasBarre && (
         <g data-name="barre-container">

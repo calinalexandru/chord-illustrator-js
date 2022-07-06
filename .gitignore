@@ -3,6 +3,6 @@
 node_modules
 !static
 static/*
-es
-cjs
+es/*
+cjs/*
 mock.svg
