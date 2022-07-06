@@ -14,6 +14,7 @@ import Fret from '../primitives/Fret';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
 import getFretPosX from '../util/getFretPosX';
+import Barre from '../primitives/Barre';
 
 /* eslint-disable react/prop-types */
 export default function Chord({
@@ -67,6 +68,7 @@ export default function Chord({
         {GUITAR_STRINGS.map((gstring) => (
           <String
             key={`string-${gstring}`}
+            number={gstring}
             y1={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
             x2={FRET_MARGIN * maxFret + GUITAR_STRING_START + 2}
             y2={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
@@ -140,30 +142,11 @@ export default function Chord({
       </g>
       {hasBarre && (
         <g data-name="barre-container">
-          <circle
-            cx={barreX}
-            cy={GUITAR_STRING_MARGIN * barre.from + 3}
-            r="5"
-            stroke="rgb(0, 0, 0)"
-            strokeWidth="1"
-            fill="rgb(0, 0, 0)"
-          />
-          <circle
-            cx={barreX}
-            cy={GUITAR_STRING_MARGIN * barre.to + 3}
-            r="5"
-            stroke="rgb(0, 0, 0)"
-            strokeWidth="1"
-            fill="rgb(0, 0, 0)"
-          />
-          <rect
-            x={barreX - 5}
-            y={GUITAR_STRING_MARGIN * barre.from + 3}
+          <Barre
             height={(barre.to - barre.from) * GUITAR_STRING_MARGIN}
-            width="10"
-            stroke="rgb(0, 0, 0)"
-            strokeWidth="1"
-            fill="rgb(0, 0, 0)"
+            x={barreX}
+            y1={GUITAR_STRING_MARGIN * barre.from + 3}
+            y2={GUITAR_STRING_MARGIN * barre.to + 3}
           />
         </g>
       )}
