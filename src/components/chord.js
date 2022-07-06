@@ -9,25 +9,27 @@ import {
   GUITAR_STRING_START,
   GUITAR_STRINGS,
 } from '../constants';
-import getMinFret from '../util/getMinFret';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
 
 /* eslint-disable react/prop-types */
 export default function Chord({
   name = 'Am',
-  fingering = {},
+  fretNumberTitle = 1,
+  fingering = [],
   barre = {},
   fretboardRange = {},
 }) {
   const hasRange = !!Object.keys(fretboardRange).length;
   const hasBarre = !!Object.keys(barre).length;
+  const barreFret = hasBarre ? barre.fret : 0;
   const barreX = BARRE_MARGIN * (barre.fret - 1) + BARRE_START;
   const frets = hasRange
     ? getArrayRange(fretboardRange)
     : getFretboardRange(fingering);
-  const fretNumber = hasRange ? fretboardRange.from : getMinFret(fingering);
-  const maxFret = hasRange ? fretboardRange.to : getMaxFret(fingering);
+  const maxFret = hasRange
+    ? fretboardRange.to - fretboardRange.from
+    : getMaxFret(fingering);
 
   return (
     <svg
@@ -171,33 +173,38 @@ export default function Chord({
         </g>
       )}
       <g data-name="fingers-container">
-        {fingering.map(({ fret = 1, string = 1 }) => (
-          <g key={`finger-${fret}-${string}`}>
-            <circle
-              cx={FRET_MARGIN * (fret - 1) + BARRE_START}
-              cy={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
-              r="5"
-              stroke="rgb(0, 0, 0)"
-              strokeWidth="1"
-              fill="rgb(0, 0, 0)"
-            />
-            {string && (
-              <text
-                key={`finger-circle-${fret}-${string}`}
-                x={FRET_MARGIN * (fret - 1) + BARRE_START - 3}
-                y={
-                  GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START + 3
-                }
-                fontSize="10"
-                fontFamily="Arial"
-                fontStyle="italic"
-                fill="white"
-              >
-                {string}
-              </text>
-            )}
-          </g>
-        ))}
+        {fingering.map(
+          ({ fret = 1, string = 1 }) =>
+            fret !== barreFret && (
+              <g key={`finger-${fret}-${string}`}>
+                <circle
+                  cx={FRET_MARGIN * (fret - 1) + BARRE_START}
+                  cy={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
+                  r="5"
+                  stroke="rgb(0, 0, 0)"
+                  strokeWidth="1"
+                  fill="rgb(0, 0, 0)"
+                />
+                {string && (
+                  <text
+                    key={`finger-circle-${fret}-${string}`}
+                    x={FRET_MARGIN * (fret - 1) + BARRE_START - 3}
+                    y={
+                      GUITAR_STRING_MARGIN * (string - 1) +
+                      GUITAR_STRING_START +
+                      3
+                    }
+                    fontSize="10"
+                    fontFamily="Arial"
+                    fontStyle="italic"
+                    fill="white"
+                  >
+                    {string}
+                  </text>
+                )}
+              </g>
+            )
+        )}
       </g>
       <text
         x="14"
@@ -209,7 +216,7 @@ export default function Chord({
         style={{ opacity: 0.3 }}
         fill="rgb(0, 0, 0)"
       >
-        {`fr${fretNumber}`}
+        {`fr${fretNumberTitle}`}
       </text>
       <text
         x="115"
