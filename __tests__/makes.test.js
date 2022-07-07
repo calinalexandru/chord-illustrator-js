@@ -1,9 +1,8 @@
-import fs from 'fs';
 import { test, expect, describe } from '@jest/globals';
 import ChordIllustrator from '../src/index';
 
-describe('basic makes', () => {
-  test('can make chord', () => {
+describe('basic chords', () => {
+  test('can make Bm chord', () => {
     const testChord = ChordIllustrator.make({
       name: 'Bm',
       mutedStrings: ['yes'],
@@ -14,7 +13,22 @@ describe('basic makes', () => {
         { fret: 4, string: 4, finger: 4 },
       ],
     });
-    fs.writeFileSync('mock.svg', testChord.toString());
-    expect(testChord).toBe('Am');
+    expect(testChord).toContain(
+      `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
+    );
+    expect(testChord).toContain(
+      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Bm</text>`
+    );
+    expect(testChord).toContain(`<g data-name="fingers-container">`);
+    expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
+    expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
+    expect(testChord).toContain(`<g data-name="frets-container">`);
+    expect(testChord).toContain(`<g data-name="barre-container">`);
+    expect(testChord).toContain(`<g data-name="finger-2-2">`);
+    expect(testChord).toContain(`<g data-name="finger-3-3">`);
+    expect(testChord).toContain(`<g data-name="finger-3-4">`);
+    expect(testChord).toContain(`data-name="finger-text-2-2-2"`);
+    expect(testChord).toContain(`data-name="finger-text-3-3-3"`);
+    expect(testChord).toContain(`data-name="finger-text-3-4-4"`);
   });
 });

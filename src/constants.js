@@ -1,3 +1,4 @@
+export const GUTTER_SMALL = 3;
 export const GUITAR_STRING_START = 23;
 export const GUITAR_STRING_MARGIN = 20;
 export const FRET_START = 85;

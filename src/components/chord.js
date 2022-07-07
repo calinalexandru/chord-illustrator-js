@@ -8,6 +8,7 @@ import {
   GUITAR_STRING_MARGIN,
   GUITAR_STRING_START,
   GUITAR_STRINGS,
+  GUTTER_SMALL,
 } from '../constants';
 import String from '../primitives/String';
 import Fret from '../primitives/Fret';
@@ -22,6 +23,7 @@ import calculatePosition from '../util/calculatePosition';
 
 export default function Chord({
   name,
+  height,
   fretNumberTitle = 1,
   fingering = [],
   barre = {},
@@ -41,7 +43,7 @@ export default function Chord({
   return (
     <svg
       style={{
-        height: '440px',
+        height: `${height}px`,
         width: 'auto',
       }}
       viewBox={`0 0 ${maxFret * FRET_MARGIN + 28} 141`}
@@ -96,8 +98,8 @@ export default function Chord({
           <Barre
             height={(barre.to - barre.from) * GUITAR_STRING_MARGIN}
             x={barreX}
-            y1={GUITAR_STRING_MARGIN * barre.from + 3}
-            y2={GUITAR_STRING_MARGIN * barre.to + 3}
+            y1={GUITAR_STRING_MARGIN * barre.from + GUTTER_SMALL}
+            y2={GUITAR_STRING_MARGIN * barre.to + GUTTER_SMALL}
           />
         </g>
       )}

@@ -1,11 +1,19 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
 import barreTransform from './util/barreTransform';
 import getMinFret from './util/getMinFret';
 
 export default class Illustrator {
+  static setContainer(container) {
+    Illustrator.container = container;
+  }
+
+  static setHeight(height) {
+    Illustrator.height = height;
+  }
+
   static make({ name = 'Am', fingering = {}, fretboardRange = {} } = {}) {
     const hasRange = !!Object.keys(fretboardRange).length;
     const minFret = getMinFret(fingering);
@@ -13,9 +21,9 @@ export default class Illustrator {
     const rangeDiff = hasRange ? fretboardRange.from - 1 : baseMargin;
     const fingersParsed = fingeringTransform(fingering, rangeDiff);
     const barreTransformed = barreTransform(fingersParsed);
-
-    return renderToString(
+    const chordRendered = (
       <Chord
+        height={Illustrator.height}
         fretNumberTitle={hasRange ? fretboardRange.from : minFret}
         fretboardRange={fretboardRange}
         name={name}
@@ -23,5 +31,10 @@ export default class Illustrator {
         barre={barreTransformed}
       />
     );
+    if (Illustrator.container) Illustrator.container.appendChid(chordRendered);
+    return renderToStaticMarkup(chordRendered);
   }
 }
+
+Illustrator.height = 440;
+Illustrator.container = null;

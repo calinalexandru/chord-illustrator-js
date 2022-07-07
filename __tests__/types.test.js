@@ -9,4 +9,11 @@ describe('basic types', () => {
   test('has make', () => {
     expect(typeof ChordIllustrator.make).toBe('function');
   });
+
+  test('has set height', () => {
+    expect(typeof ChordIllustrator.setHeight).toBe('function');
+  });
+  test('has set container', () => {
+    expect(typeof ChordIllustrator.setContainer).toBe('function');
+  });
 });
