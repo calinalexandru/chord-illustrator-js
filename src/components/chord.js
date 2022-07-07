@@ -14,12 +14,14 @@ import Fret from '../primitives/Fret';
 import Barre from '../primitives/Barre';
 import Neck from '../primitives/Neck';
 import Finger from '../primitives/Finger';
+import FretTitle from '../primitives/FretTitle';
+import Title from '../primitives/Title';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
-import getFretPosX from '../util/getFretPosX';
+import calculatePosition from '../util/calculatePosition';
 
 export default function Chord({
-  name = 'Am',
+  name,
   fretNumberTitle = 1,
   fingering = [],
   barre = {},
@@ -60,8 +62,8 @@ export default function Chord({
           <Fret
             key={`fret-${fretKey}`}
             number={fretKey}
-            x1={getFretPosX(FRET_MARGIN, fretKey, FRET_START)}
-            x2={getFretPosX(FRET_MARGIN, fretKey, FRET_START)}
+            x1={calculatePosition(FRET_MARGIN, fretKey - 1, FRET_START)}
+            x2={calculatePosition(FRET_MARGIN, fretKey - 1, FRET_START)}
           />
         ))}
       </g>
@@ -70,9 +72,19 @@ export default function Chord({
           <String
             key={`string-${gstring}`}
             number={gstring}
-            y1={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
-            x2={FRET_MARGIN * maxFret + GUITAR_STRING_START + 2}
-            y2={GUITAR_STRING_MARGIN * gstring + GUITAR_STRING_START}
+            y1={calculatePosition(
+              GUITAR_STRING_MARGIN,
+              gstring,
+              GUITAR_STRING_START
+            )}
+            x2={
+              calculatePosition(FRET_MARGIN, maxFret, GUITAR_STRING_START) + 2
+            }
+            y2={calculatePosition(
+              GUITAR_STRING_MARGIN,
+              gstring,
+              GUITAR_STRING_START
+            )}
           />
         ))}
       </g>
@@ -91,38 +103,25 @@ export default function Chord({
       )}
       <g data-name="fingers-container">
         {fingering.map(
-          ({ fret = 1, string = 1 }) =>
+          ({ fret = 1, string = 1, finger }) =>
             fret !== barreFret && (
               <Finger
+                key={`finger-${string}-${fret}`}
                 string={string}
                 fret={fret}
-                x={FRET_MARGIN * (fret - 1) + BARRE_START}
-                y={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
+                finger={finger}
+                x={calculatePosition(FRET_MARGIN, fret - 1, BARRE_START)}
+                y={calculatePosition(
+                  GUITAR_STRING_MARGIN,
+                  string - 1,
+                  GUITAR_STRING_START
+                )}
               />
             )
         )}
       </g>
-      <text
-        x="14"
-        y="138"
-        fontSize="12"
-        fontFamily="Courier"
-        fontStyle="italic"
-        fontWeight="bold"
-        style={{ opacity: 0.3 }}
-        fill="rgb(0, 0, 0)"
-      >
-        {`fr${fretNumberTitle}`}
-      </text>
-      <text
-        x="115"
-        y="13"
-        fontFamily="Courier"
-        fill="rgb(0, 0, 0)"
-        textAnchor="middle"
-      >
-        {name}
-      </text>
+      <FretTitle number={fretNumberTitle} />
+      {name && <Title name={name} />}
     </svg>
   );
 }

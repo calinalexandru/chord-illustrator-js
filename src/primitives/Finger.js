@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Finger({ fret, string, x, y }) {
+export default function Finger({ fret, string, finger, x, y }) {
   return (
     <g data-name={`finger-${fret}-${string}`}>
       <circle
@@ -12,9 +12,9 @@ export default function Finger({ fret, string, x, y }) {
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
       />
-      {string && (
+      {finger && (
         <text
-          data-name={`finger-text-${fret}-${string}`}
+          data-name={`finger-text-${fret}-${string}-${finger}`}
           x={x - 3}
           y={y + 3}
           fontSize="10"
@@ -22,7 +22,7 @@ export default function Finger({ fret, string, x, y }) {
           fontStyle="italic"
           fill="white"
         >
-          {string}
+          {finger}
         </text>
       )}
     </g>
