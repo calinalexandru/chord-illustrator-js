@@ -1,5 +1,4 @@
 import React from 'react';
-import getFretboardRange from '../util/getFretboardRange';
 import {
   BARRE_START,
   BARRE_MARGIN,
@@ -17,8 +16,6 @@ import Neck from '../primitives/Neck';
 import Finger from '../primitives/Finger';
 import FretTitle from '../primitives/FretTitle';
 import Title from '../primitives/Title';
-import getMaxFret from '../util/getMaxFret';
-import getArrayRange from '../util/getArrayRange';
 import calculatePosition from '../util/calculatePosition';
 
 export default function Chord({
@@ -26,20 +23,10 @@ export default function Chord({
   height,
   fretNumberTitle = 1,
   fingering = [],
-  barre = {},
-  fretboardRange = {},
+  barre = false,
+  frets = [],
+  maxFret = 3,
 }) {
-  const hasRange = !!Object.keys(fretboardRange).length;
-  const hasBarre = !!Object.keys(barre).length;
-  const barreFret = hasBarre ? barre.fret : 0;
-  const barreX = BARRE_MARGIN * (barre.fret - 1) + BARRE_START;
-  const frets = hasRange
-    ? getArrayRange(fretboardRange)
-    : getFretboardRange(fingering);
-  const maxFret = hasRange
-    ? fretboardRange.to - fretboardRange.from
-    : getMaxFret(fingering);
-
   return (
     <svg
       style={{
@@ -93,11 +80,11 @@ export default function Chord({
       <g data-name="guitar-neck-container">
         <Neck />
       </g>
-      {hasBarre && (
+      {barre && (
         <g data-name="barre-container">
           <Barre
             height={(barre.to - barre.from) * GUITAR_STRING_MARGIN}
-            x={barreX}
+            x={calculatePosition(BARRE_MARGIN, barre.fret - 1, BARRE_START)}
             y1={GUITAR_STRING_MARGIN * barre.from + GUTTER_SMALL}
             y2={GUITAR_STRING_MARGIN * barre.to + GUTTER_SMALL}
           />
@@ -106,7 +93,7 @@ export default function Chord({
       <g data-name="fingers-container">
         {fingering.map(
           ({ fret = 1, string = 1, finger }) =>
-            fret !== barreFret && (
+            (!barre || (barre && fret !== barre.fret)) && (
               <Finger
                 key={`finger-${string}-${fret}`}
                 string={string}

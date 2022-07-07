@@ -4,6 +4,9 @@ import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
 import barreTransform from './util/barreTransform';
 import getMinFret from './util/getMinFret';
+import getFretboardRange from './util/getFretboardRange';
+import getArrayRange from './util/getArrayRange';
+import getMaxFret from './util/getMaxFret';
 
 export default class Illustrator {
   static setContainer(container) {
@@ -21,12 +24,19 @@ export default class Illustrator {
     const rangeDiff = hasRange ? fretboardRange.from - 1 : baseMargin;
     const fingersParsed = fingeringTransform(fingering, rangeDiff);
     const barreTransformed = barreTransform(fingersParsed);
+    const frets = hasRange
+      ? getArrayRange(fretboardRange)
+      : getFretboardRange(fingersParsed);
+    const maxFret = hasRange
+      ? fretboardRange.to - fretboardRange.from
+      : getMaxFret(fingersParsed);
     const chordRendered = (
       <Chord
         height={Illustrator.height}
         fretNumberTitle={hasRange ? fretboardRange.from : minFret}
-        fretboardRange={fretboardRange}
+        frets={frets}
         name={name}
+        maxFret={maxFret}
         fingering={fingersParsed}
         barre={barreTransformed}
       />
