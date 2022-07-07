@@ -13,11 +13,11 @@ import String from '../primitives/String';
 import Fret from '../primitives/Fret';
 import Barre from '../primitives/Barre';
 import Neck from '../primitives/Neck';
+import Finger from '../primitives/Finger';
 import getMaxFret from '../util/getMaxFret';
 import getArrayRange from '../util/getArrayRange';
 import getFretPosX from '../util/getFretPosX';
 
-/* eslint-disable react/prop-types */
 export default function Chord({
   name = 'Am',
   fretNumberTitle = 1,
@@ -93,33 +93,12 @@ export default function Chord({
         {fingering.map(
           ({ fret = 1, string = 1 }) =>
             fret !== barreFret && (
-              <g key={`finger-${fret}-${string}`}>
-                <circle
-                  cx={FRET_MARGIN * (fret - 1) + BARRE_START}
-                  cy={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
-                  r="5"
-                  stroke="rgb(0, 0, 0)"
-                  strokeWidth="1"
-                  fill="rgb(0, 0, 0)"
-                />
-                {string && (
-                  <text
-                    key={`finger-circle-${fret}-${string}`}
-                    x={FRET_MARGIN * (fret - 1) + BARRE_START - 3}
-                    y={
-                      GUITAR_STRING_MARGIN * (string - 1) +
-                      GUITAR_STRING_START +
-                      3
-                    }
-                    fontSize="10"
-                    fontFamily="Arial"
-                    fontStyle="italic"
-                    fill="white"
-                  >
-                    {string}
-                  </text>
-                )}
-              </g>
+              <Finger
+                string={string}
+                fret={fret}
+                x={FRET_MARGIN * (fret - 1) + BARRE_START}
+                y={GUITAR_STRING_MARGIN * (string - 1) + GUITAR_STRING_START}
+              />
             )
         )}
       </g>
