@@ -7,6 +7,7 @@ import getMinFret from './util/getMinFret';
 import getFretboardRange from './util/getFretboardRange';
 import getArrayRange from './util/getArrayRange';
 import getMaxFret from './util/getMaxFret';
+import isLinearChord from './predicates/isLinearChord';
 
 export default class Illustrator {
   static setContainer(container) {
@@ -20,7 +21,8 @@ export default class Illustrator {
   static make({ name = 'Am', fingering = {}, fretboardRange = {} } = {}) {
     const hasRange = !!Object.keys(fretboardRange).length;
     const minFret = getMinFret(fingering);
-    const baseMargin = minFret > 1 ? minFret - 1 : 0;
+    const linearMargin = isLinearChord(fingering) ? 2 : 1;
+    const baseMargin = minFret > 1 ? minFret - linearMargin : 0;
     const rangeDiff = hasRange ? fretboardRange.from - 1 : baseMargin;
     const fingersParsed = fingeringTransform(fingering, rangeDiff);
     const barreTransformed = barreTransform(fingersParsed);
@@ -30,6 +32,7 @@ export default class Illustrator {
     const maxFret = hasRange
       ? fretboardRange.to - fretboardRange.from
       : getMaxFret(fingersParsed);
+
     const chordRendered = (
       <Chord
         height={Illustrator.height}
