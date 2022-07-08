@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from '../fake-react';
 import {
   BARRE_START,
   BARRE_MARGIN,

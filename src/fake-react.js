@@ -7,21 +7,32 @@ const appendChild = (parent, child) => {
     );
 };
 
-export default {
-  createElement: (tag, props, ...children) => {
-    const element = document.createElement(tag);
+export const createElement = (tag, props, ...children) => {
+  if (typeof tag === 'function') {
+    return tag({ ...props }, children);
+  }
+  const element = document.createElement(tag);
 
-    Object.entries(props || {}).forEach(([name, value]) => {
-      if (name.startsWith('on') && name.toLowerCase() in window)
-        element.addEventListener(name.toLowerCase().substr(2), value);
-      else element.setAttribute(name, value.toString());
-    });
+  Object.entries(props || {}).forEach(([name, value]) => {
+    console.log('name', name);
+    console.log('value', value);
+    if (typeof value === 'string') {
+      element.setAttribute(name, value.toString());
+    } else if (typeof value === 'object') {
+      element.setAttribute(
+        name,
+        Object.keys(value)
+          .map((v) => `${v}:${value[v]}`)
+          .join(';')
+      );
+    }
+  });
 
-    children.forEach((child) => {
-      appendChild(element, child);
-    });
+  children.forEach((child) => {
+    appendChild(element, child);
+  });
 
-    return element;
-  },
-  createFragment: (props, ...children) => children,
+  return element;
 };
+
+export const createFragment = (props, ...children) => children;

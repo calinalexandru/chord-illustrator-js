@@ -1,19 +1,18 @@
 module.exports = {
-  presets: [['@babel/preset-react'], ['@babel/preset-env', { modules: false }]],
   plugins: [
-    // [
-    //   'ramda',
-    //   {
-    //     useES: true,
-    //   },
-    // ],
-    ['@babel/plugin-transform-react-jsx'],
-    ['@babel/plugin-transform-runtime', { regenerator: true }],
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-syntax-dynamic-import',
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        pragma: 'createElement',
+        pragmaFrag: 'createFragment',
+        throwIfNamespace: false, // defaults to true
+      },
+    ],
   ],
   env: {
+    cjs: {
+      plugins: ['@babel/plugin-transform-modules-commonjs'],
+    },
     test: {
       plugins: ['@babel/plugin-transform-modules-commonjs'],
     },

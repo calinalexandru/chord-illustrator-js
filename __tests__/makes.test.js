@@ -1,5 +1,13 @@
+/**
+ * @jest-environment jsdom
+ */
+// import { renderToStaticMarkup } from 'react-dom/server';
 import { test, expect, describe } from '@jest/globals';
 import ChordIllustrator from '../src/index';
+import saveMock from '../src/util/saveMock';
+
+const renderToStaticMarkup = (dom) => dom.outerHTML;
+ChordIllustrator.setRenderStrategy(renderToStaticMarkup);
 
 describe('basic chords', () => {
   test('can make Bm chord', () => {
@@ -93,19 +101,22 @@ describe('basic chords', () => {
         { fret: 3, string: 2, finger: 3 },
       ],
     });
+    saveMock(testChord);
     expect(testChord).toContain(
       `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
     );
     expect(testChord).toContain(
-      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Em</text>`
+      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Dm</text>`
     );
     expect(testChord).toContain(`<g data-name="fingers-container">`);
     expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
     expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
     expect(testChord).toContain(`<g data-name="frets-container">`);
-    expect(testChord).toContain(`<g data-name="finger-2-4">`);
-    expect(testChord).toContain(`<g data-name="finger-2-5">`);
-    expect(testChord).toContain(`data-name="finger-text-2-4-2"`);
-    expect(testChord).toContain(`data-name="finger-text-2-5-3"`);
+    expect(testChord).toContain(`<g data-name="finger-1-1">`);
+    expect(testChord).toContain(`<g data-name="finger-2-3">`);
+    expect(testChord).toContain(`<g data-name="finger-3-2">`);
+    expect(testChord).toContain(`data-name="finger-text-1-1-1"`);
+    expect(testChord).toContain(`data-name="finger-text-2-3-2"`);
+    expect(testChord).toContain(`data-name="finger-text-3-2-3"`);
   });
 });
