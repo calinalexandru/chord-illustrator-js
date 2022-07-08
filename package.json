@@ -9,6 +9,9 @@
     "email": "calinalexandru1990@gmail.com",
     "url": "https://alexandrucalin.me/"
   },
+  "alias": {
+    "process": false
+  },
   "files": [
     "src",
     "src/index.js"
@@ -61,6 +64,7 @@
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
     "jsdom": "^20.0.0",
+    "lodash.kebabcase": "^4.1.1",
     "prettier": "^2.5.1",
     "process": "^0.11.10",
     "react": "^18.2.0",

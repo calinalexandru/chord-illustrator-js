@@ -6,4 +6,6 @@ static/*
 es/*
 cjs/*
 mock.svg
-.parchel-cache
+.parcel-cache/*
+dist/*
+

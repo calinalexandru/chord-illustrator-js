@@ -1,4 +1,5 @@
 import { createElement } from '../fake-react';
+// import { createElement } from 'react';
 
 export default function Fret({ number, x1, x2 }) {
   return (

@@ -1,3 +1,4 @@
+// import { createElement } from 'react';
 import { createElement } from './fake-react';
 import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
@@ -18,7 +19,7 @@ export default class Illustrator {
   }
 
   static setRenderStrategy(strategy) {
-    Illustrator.strategy = strategy;
+    Illustrator.renderStrategy = strategy;
   }
 
   static make({ name = 'Am', fingering = {}, fretboardRange = {} } = {}) {
@@ -57,10 +58,23 @@ export default class Illustrator {
       />
     );
     if (Illustrator.container) Illustrator.container.appendChid(chordRendered);
+    // console.log('chordRendered', chordRendered);
+    document.body.appendChild(chordRendered);
     return Illustrator.renderStrategy(chordRendered);
   }
 }
 
 Illustrator.height = 440;
 Illustrator.container = null;
-Illustrator.renderStrategy = (node) => node.outerHTML;
+Illustrator.renderStrategy = (node) => node;
+
+Illustrator.make({
+  name: 'Bm',
+  mutedStrings: ['yes'],
+  fingering: [
+    { fret: 2, barre: { from: 1, to: 5 } },
+    { fret: 3, string: 2, finger: 2 },
+    { fret: 4, string: 3, finger: 3 },
+    { fret: 4, string: 4, finger: 4 },
+  ],
+});

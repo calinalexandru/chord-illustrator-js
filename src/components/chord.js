@@ -1,4 +1,5 @@
 import { createElement } from '../fake-react';
+// import { createElement } from 'react';
 import {
   BARRE_START,
   BARRE_MARGIN,
@@ -34,7 +35,6 @@ export default function Chord({
         width: 'auto',
       }}
       viewBox={`0 0 ${maxFret * FRET_MARGIN + 28} 141`}
-      xmlns="http://www.w3.org/2000/svg"
     >
       <rect
         x="25"

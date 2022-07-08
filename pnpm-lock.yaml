@@ -28,6 +28,7 @@ specifiers:
   jest: ^28.1.2
   jest-environment-jsdom: ^28.1.2
   jsdom: ^20.0.0
+  lodash.kebabcase: ^4.1.1
   prettier: ^2.5.1
   process: ^0.11.10
   react: ^18.2.0
@@ -61,6 +62,7 @@ devDependencies:
   jest: 28.1.2
   jest-environment-jsdom: 28.1.2
   jsdom: 20.0.0
+  lodash.kebabcase: 4.1.1
   prettier: 2.7.1
   process: 0.11.10
   react: 18.2.0
@@ -4092,6 +4094,10 @@ packages:
 
   /lodash.isplainobject/4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+    dev: true
+
+  /lodash.kebabcase/4.1.1:
+    resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
     dev: true
 
   /lodash.merge/4.6.2:

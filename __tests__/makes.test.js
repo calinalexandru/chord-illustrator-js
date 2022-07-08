@@ -1,13 +1,16 @@
 /**
  * @jest-environment jsdom
  */
-// import { renderToStaticMarkup } from 'react-dom/server';
+// import { createRoot } from 'react-dom/client';
 import { test, expect, describe } from '@jest/globals';
 import ChordIllustrator from '../src/index';
 import saveMock from '../src/util/saveMock';
 
-const renderToStaticMarkup = (dom) => dom.outerHTML;
-ChordIllustrator.setRenderStrategy(renderToStaticMarkup);
+// const renderToStaticMarkup = (dom) => dom.outerHTML;
+// const container = document.createElement('div');
+// document.body.appendChild(container);
+// const root = createRoot(container);
+// ChordIllustrator.setRenderStrategy(root);
 
 describe('basic chords', () => {
   test('can make Bm chord', () => {
@@ -21,6 +24,8 @@ describe('basic chords', () => {
         { fret: 4, string: 4, finger: 4 },
       ],
     });
+
+    saveMock(testChord);
     expect(testChord).toContain(
       `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
     );
@@ -101,7 +106,6 @@ describe('basic chords', () => {
         { fret: 3, string: 2, finger: 3 },
       ],
     });
-    saveMock(testChord);
     expect(testChord).toContain(
       `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
     );

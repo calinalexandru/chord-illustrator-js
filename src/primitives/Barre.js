@@ -1,4 +1,5 @@
 import { createElement, createFragment } from '../fake-react';
+// import { createElement, createFragment } from 'react';
 
 export default function Barre({ x, y1, y2, height }) {
   return (
