@@ -1,4 +1,4 @@
-import { createElement } from '../fake-react';
+import { createElement } from '../jsx';
 // import { createElement } from 'react';
 
 export default function FretTitle({ number }) {

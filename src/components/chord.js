@@ -1,5 +1,4 @@
-import { createElement } from '../fake-react';
-// import { createElement } from 'react';
+import { createElement } from '../jsx';
 import {
   BARRE_START,
   BARRE_MARGIN,
@@ -9,6 +8,7 @@ import {
   GUITAR_STRING_START,
   GUITAR_STRINGS,
   GUTTER_SMALL,
+  GUITAR_STRINGS_STATUS,
 } from '../constants';
 import String from '../primitives/String';
 import Fret from '../primitives/Fret';
@@ -27,6 +27,7 @@ export default function Chord({
   barre = false,
   frets = [],
   maxFret = 3,
+  stringsStatus = GUITAR_STRINGS_STATUS,
 }) {
   return (
     <svg
@@ -78,7 +79,7 @@ export default function Chord({
         ))}
       </g>
       <g data-name="guitar-neck-container">
-        <Neck />
+        <Neck stringsStatus={stringsStatus} />
       </g>
       {barre && (
         <g data-name="barre-container">

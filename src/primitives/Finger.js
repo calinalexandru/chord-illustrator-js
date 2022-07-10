@@ -1,5 +1,4 @@
-import { createElement } from '../fake-react';
-// import { createElement } from 'react';
+import { createElement } from '../jsx';
 
 export default function Finger({ fret, string, finger, x, y }) {
   return (

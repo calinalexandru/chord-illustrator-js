@@ -1,5 +1,4 @@
-import { createElement } from '../fake-react';
-// import { createElement } from 'react';
+import { createElement } from '../jsx';
 
 export default function Fret({ number, x1, x2 }) {
   return (
