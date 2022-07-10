@@ -16,7 +16,7 @@ export default function Finger({ fret, string, finger, x, y }) {
         <text
           data-name={`finger-text-${fret}-${string}-${finger}`}
           x={x - 3}
-          y={y + 3}
+          y={y + 4}
           fontSize="10"
           fontFamily="Arial"
           fontStyle="italic"

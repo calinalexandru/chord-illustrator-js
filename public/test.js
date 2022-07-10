@@ -1,5 +1,6 @@
 import ChordIllustrator from '../src/index';
 
+// ChordIllustrator.setHeight(128);
 ChordIllustrator.setContainer(document.body);
 ChordIllustrator.make({
   name: 'Bm',
