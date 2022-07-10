@@ -1,4 +1,4 @@
-import { createElement } from '../jsx';
+// import { createElement } from '../jsx';
 import {
   BARRE_START,
   BARRE_MARGIN,
@@ -23,6 +23,8 @@ export default function Chord({
   name,
   height,
   fretNumberTitle = 1,
+  fretNumberPrefix = 'fr',
+  showFretNumber = true,
   fingering = [],
   barre = false,
   frets = [],
@@ -110,7 +112,9 @@ export default function Chord({
             )
         )}
       </g>
-      <FretTitle number={fretNumberTitle} />
+      {showFretNumber && (
+        <FretTitle number={fretNumberTitle} prefix={fretNumberPrefix} />
+      )}
       {name && <Title name={name} />}
     </svg>
   );

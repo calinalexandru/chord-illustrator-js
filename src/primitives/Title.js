@@ -1,5 +1,4 @@
 import { createElement } from '../jsx';
-// import { createElement } from 'react';
 
 export default function Title({ name }) {
   return (

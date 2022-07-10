@@ -27,7 +27,9 @@ export default class Illustrator {
     fingering = {},
     fretboardRange = {},
     mutedStrings = [],
+    labels = {},
   } = {}) {
+    const { showFretNumber = true, fretNumberPrefix = 'fr' } = labels;
     const hasRange = !!Object.keys(fretboardRange).length;
     const minFret = getMinFret(fingering);
     const linearMargin = isLinearChord(fingering) ? 2 : 1;
@@ -48,6 +50,8 @@ export default class Illustrator {
       <Chord
         height={Illustrator.height}
         fretNumberTitle={hasRange ? fretboardRange.from : minFret}
+        fretNumberPrefix={fretNumberPrefix}
+        showFretNumber={showFretNumber}
         frets={frets}
         name={name}
         maxFret={maxFret}

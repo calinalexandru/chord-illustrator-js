@@ -1,5 +1,4 @@
 import { createElement } from '../jsx';
-// import { createElement } from 'react';
 
 export default function String({ number, x1 = 25, y1, x2, y2 }) {
   return (

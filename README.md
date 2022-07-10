@@ -71,6 +71,11 @@ ChordIllustrator.setContainer(document.body);
 > override fretboard range with object:\
 > `{from: 1, to: 12}`
 
+> ##### @param(labels: object)
+>
+> customize fret title\
+> `{ showFretNumber = true, fretNumberPrefix = 'fr' }`
+
 ## License
 
 Apache-2.0 © [Alexandru Calin](https://alexandrucalin.me/)
