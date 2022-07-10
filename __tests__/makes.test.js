@@ -25,7 +25,6 @@ describe('basic chords', () => {
       ],
     });
 
-    saveMock(testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
@@ -73,7 +72,7 @@ describe('basic chords', () => {
     expect(testChord).toContain(`data-name="finger-text-2-4-3"`);
   });
 
-  test('can make Dm chord', () => {
+  test('can make Em chord', () => {
     const testChord = ChordIllustrator.make({
       name: 'Em',
       fingering: [
@@ -106,6 +105,7 @@ describe('basic chords', () => {
         { fret: 3, string: 2, finger: 3 },
       ],
     });
+    saveMock(testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
