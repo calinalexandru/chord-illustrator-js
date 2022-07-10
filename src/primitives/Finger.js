@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
 export default function Finger({ fret, string, finger, x, y }) {

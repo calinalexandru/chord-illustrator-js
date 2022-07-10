@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
 export default function String({ number, x1 = 25, y1, x2, y2 }) {

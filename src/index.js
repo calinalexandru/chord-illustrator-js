@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import { createElement } from './jsx';
 import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';

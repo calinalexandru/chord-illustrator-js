@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
 export default function Fret({ number, x1, x2 }) {

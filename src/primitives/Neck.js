@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+/* eslint-disable-next-line */
 import { createElement, createFragment } from '../jsx';
 import {
   GUITAR_NECK_START,

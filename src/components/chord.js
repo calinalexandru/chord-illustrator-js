@@ -1,4 +1,5 @@
-// import { createElement } from '../jsx';
+/* eslint-disable-next-line */
+import { createElement } from '../jsx';
 import {
   BARRE_START,
   BARRE_MARGIN,

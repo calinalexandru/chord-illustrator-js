@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import { createElement, createFragment } from '../jsx';
 
 export default function Barre({ x, y1, y2, height }) {
