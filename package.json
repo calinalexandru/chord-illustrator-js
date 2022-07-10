@@ -13,11 +13,10 @@
     "process": false
   },
   "files": [
-    "src",
-    "src/index.js"
+    "es",
+    "es/index.js"
   ],
-  "main": "src/index.js",
-  "module": "es/index.js",
+  "main": "es/index.js",
   "keywords": [
     "chord",
     "illustrator",
