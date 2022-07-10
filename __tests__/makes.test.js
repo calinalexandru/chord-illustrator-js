@@ -27,7 +27,7 @@ describe('basic chords', () => {
 
     saveMock(testChord);
     expect(testChord).toContain(
-      `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
+      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
     expect(testChord).toContain(
       `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Bm</text>`
@@ -56,7 +56,7 @@ describe('basic chords', () => {
       ],
     });
     expect(testChord).toContain(
-      `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
+      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
     expect(testChord).toContain(
       `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Am</text>`
@@ -82,7 +82,7 @@ describe('basic chords', () => {
       ],
     });
     expect(testChord).toContain(
-      `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
+      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
     expect(testChord).toContain(
       `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Em</text>`
@@ -107,7 +107,7 @@ describe('basic chords', () => {
       ],
     });
     expect(testChord).toContain(
-      `<svg style="height:440px;width:auto" viewBox="0 0 208 141" xmlns="http://www.w3.org/2000/svg">`
+      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
     expect(testChord).toContain(
       `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Dm</text>`

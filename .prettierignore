@@ -4,3 +4,5 @@ coverage
 es
 cjs
 node_modules
+dist
+.parcel-cache
