@@ -9,7 +9,9 @@ const appendChild = (parent, child) => {
 
 export const createElement = (tag, props, ...children) => {
   if (typeof tag === 'function') {
-    return tag({ ...props }, children);
+    const out = tag({ ...props }, children);
+    if (Array.isArray(out)) return out.filter((o) => o !== false);
+    return out;
   }
 
   const isSvg = tag === 'svg';
@@ -36,7 +38,7 @@ export const createElement = (tag, props, ...children) => {
   });
 
   children.forEach((child) => {
-    appendChild(element, child);
+    if (child !== false) appendChild(element, child);
   });
 
   return element;

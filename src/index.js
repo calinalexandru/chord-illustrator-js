@@ -2,6 +2,7 @@
 import { createElement } from './jsx';
 import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
+import fingeringWithoutBarre from './util/fingeringWithoutBarre';
 import barreTransform from './util/barreTransform';
 import getMinFret from './util/getMinFret';
 import getFretboardRange from './util/getFretboardRange';
@@ -24,7 +25,7 @@ export default class Illustrator {
   }
 
   static make({
-    name = 'Am',
+    name,
     fingering = {},
     fretboardRange = {},
     mutedStrings = [],
@@ -44,6 +45,7 @@ export default class Illustrator {
     const maxFret = hasRange
       ? fretboardRange.to - fretboardRange.from
       : getMaxFret(fingersParsed);
+    const fingersParsedWithoutBarre = fingeringWithoutBarre(fingersParsed);
 
     const stringsStatus = stringsStatusTransform(mutedStrings);
 
@@ -54,9 +56,9 @@ export default class Illustrator {
         fretNumberPrefix={fretNumberPrefix}
         showFretNumber={showFretNumber}
         frets={frets}
-        name={name}
+        name={name || false}
         maxFret={maxFret}
-        fingering={fingersParsed}
+        fingering={fingersParsedWithoutBarre}
         barre={barreTransformed}
         stringsStatus={stringsStatus}
       />

@@ -84,6 +84,22 @@ export default function Chord({
       <g data-name="guitar-neck-container">
         <Neck stringsStatus={stringsStatus} />
       </g>
+      <g data-name="fingers-container">
+        {fingering.map(({ fret = 1, string = 1, finger }) => (
+          <Finger
+            key={`finger-${string}-${fret}`}
+            string={string}
+            fret={fret}
+            finger={finger}
+            x={calculatePosition(FRET_MARGIN, fret - 1, BARRE_START)}
+            y={calculatePosition(
+              GUITAR_STRING_MARGIN,
+              string - 1,
+              GUITAR_STRING_START
+            )}
+          />
+        ))}
+      </g>
       {barre && (
         <g data-name="barre-container">
           <Barre
@@ -94,25 +110,6 @@ export default function Chord({
           />
         </g>
       )}
-      <g data-name="fingers-container">
-        {fingering.map(
-          ({ fret = 1, string = 1, finger }) =>
-            (!barre || (barre && fret !== barre.fret)) && (
-              <Finger
-                key={`finger-${string}-${fret}`}
-                string={string}
-                fret={fret}
-                finger={finger}
-                x={calculatePosition(FRET_MARGIN, fret - 1, BARRE_START)}
-                y={calculatePosition(
-                  GUITAR_STRING_MARGIN,
-                  string - 1,
-                  GUITAR_STRING_START
-                )}
-              />
-            )
-        )}
-      </g>
       {showFretNumber && (
         <FretTitle number={fretNumberTitle} prefix={fretNumberPrefix} />
       )}
