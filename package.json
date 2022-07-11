@@ -1,7 +1,7 @@
 {
   "name": "chord-illustrator",
   "sideEffects": "false",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "SVG based library which illustrates finger positions of a guitar chord on a fretboard.",
   "homepage": "https://github.com/calinalexandru/chord-illustrator-js#readme",
   "author": {
