@@ -1,26 +1,77 @@
-## 1.2.4
+- chore: update readme
+- 2.0.4
+- fix: filter invalid html elements (false)
+- chore: remove cjs es from git
+- 2.0.3
+- chore: remove dist from git
+- 2.0.2
+- feat: add services tests
+- 2.0.1
+- chore: add es & cjs builds
+- chore(eslint): disable createElement warning
+- feat: add fret labels title
+- chore: update rdm for v2
+- 2.0.0
+- fix: finger title position
+- feat: add neck strings Status
+- chore: remove unused devDependencies
+- fix: createElement for svg elements
+- wip: 2
+- wip: testing
+- fix: freboard auto range add linear chord
+- refactor: chord Props
+- feat: add setHeight & setContainer
+- refactor: Title & FretTitle from chord component into primitives
+- refactor: Finger from Chord component into primitive
+- chore: remove artifacts
+- refactor: Barre from Chord component into primitives
+- refactor: Barre from Chord component into primitives
+- refactor: Fret and String from Chords into primitives
+- fix: fretboard range now expands properly
+- feat: account for fretboardRange
+- feat: add constants
+- refactor: chord component
+- chore: re-setup tests on esm
+- 1.2.9
+- Merge pull request #17 from pedrovelasquez9/bugfix/muted-strings-6-length-bug
+- bugfix: improve in muted strings array length validation to avoid error when passing a 6 value array
+- 1.2.8
+- 1.2.7
+- force frets & strings to number in chord transformer & fixing vulns?
+- adding git ignore
+- 1.2.6
+- restored deleted entities just to be sure
+- fretboard range
+- 1.2.5
+- check for static dir
+- update rdm
+- 1.2.4
 - making fretboard dynamic length based on chord data
-
-## 1.2.2
+- 1.2.3
+- added chord title
+- 1.2.2
+- update chord xml & image
 - fixed issues with barre & fret number
-
-## 1.1.0
+- 1.2.1
+- All your codebase are belong to us.
+- really ignore ignored worsd
+- 1.2.0
+- All your codebase are belong to us.
+- To those I leave behind, good luck!
+- somebody keeps erasing my changes.
+- lol
+- adding default barre from 1 to 6
+- finishing basic chords, implemeting fret display
+- return Am on default
+- 1.1.1
+- redesign / fretNum, finger number
+- added some more mocks to model, new string parameter available for method make('Bm')
+- .
+- 1.1.0
 - moved width & height to viewBox attribute for svg container, which allows the fields to be used as input
-- added/changed **setContainer**, **setHeight**, **make**
-
-## 1.0.4
--  added tests 'is not null, has method chord, can generate svg'
-
-## 1.0.2
-
-- re-initialize library with [node yeomen generator](http://yeoman.io/generators/)
-
-## 1.0.1
-
-- refactored illustrator path
-- updated license type
-
-## 1.0.0
-
-- integrated with nodeJS
-
+- added viewBox to svg container, new acceptable chord option 'height'
+- working on new test
+- we skipped a ver
+- 1.0.4
+- added tests 'is not null, has method chord, can generate svg'
+- node yo
