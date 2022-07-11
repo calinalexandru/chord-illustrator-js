@@ -1,6 +1,9 @@
 # chord-illustrator [![NPM version][npm-image]][npm-url]
 
 > SVG based library which illustrates finger positions of a guitar chord on a fretboard.
+> Blazingly fast and small\
+> 1.6 kB MINIFIED\
+> 734 B MINIFIED + GZIPPED
 
 ## Installation
 

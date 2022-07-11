@@ -3,7 +3,10 @@
 node_modules
 !static
 static/*
+static2/*
 mock.svg
 .parcel-cache/*
 dist/*
+es
+cjs
 

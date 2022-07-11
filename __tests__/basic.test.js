@@ -25,6 +25,7 @@ describe('basic chords', () => {
       ],
     });
 
+    saveMock('basic/Bm', testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
@@ -54,6 +55,7 @@ describe('basic chords', () => {
         { fret: 2, string: 4, finger: 3 },
       ],
     });
+    saveMock('basic/Am', testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
@@ -80,6 +82,7 @@ describe('basic chords', () => {
         { fret: 2, string: 5, finger: 3 },
       ],
     });
+    saveMock('basic/Em', testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
@@ -99,13 +102,14 @@ describe('basic chords', () => {
   test('can make Dm chord', () => {
     const testChord = ChordIllustrator.make({
       name: 'Dm',
+      mutedStrings: ['yes', 'yes', 'open'],
       fingering: [
         { fret: 1, string: 1, finger: 1 },
         { fret: 2, string: 3, finger: 2 },
         { fret: 3, string: 2, finger: 3 },
       ],
     });
-    saveMock(testChord);
+    saveMock('basic/Dm', testChord);
     expect(testChord).toContain(
       `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
     );
