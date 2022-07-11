@@ -7,6 +7,6 @@ static2/*
 mock.svg
 .parcel-cache/*
 dist/*
-es
-cjs
+es/*
+cjs/*
 
