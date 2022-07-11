@@ -38,10 +38,11 @@ ChordIllustrator.setContainer(document.body);
 
 ![sometext](https://i.ibb.co/pzGZ1Db/Screen-Shot-2019-01-29-at-15-00-58.png)
 
-> #Docs
-> _the fretboard will expand automatically based on fret numbers_
+> _the fretboard will expand automatically based on chord length_
 
-#### .setContainer(HTMLElement)
+## API docs
+
+#### .setContainer(container: HTMLElement)
 
 - set the container where output will be generated.
 
@@ -49,40 +50,44 @@ ChordIllustrator.setContainer(document.body);
 
 - specify the SVG height, width will adjust automatically
 
-#### .make({ name: string, fingering: array, mutedStrings: array })
+#### .make({ name: string, fingering: array, mutedStrings: array, fretboardRange: object, labels: object })
+
+- specify the chord options by passing an object. Only `fingering` property is mandatory, others are optional.
 
 > ##### @param(name: string)
 >
-> chord name/title
+> Title displayed at the top. Ommit the property to hide. \
+> ` name: 'Am'`
 >
 > ##### @param(fingering: array)
 >
-> array of objects\
-> eg: \
-> `{ fret: 2, barre: { from: 1, to: 5 } }` \
-> `{ fret: 3, string: 2, finger: 2 }`
+> Mandatory property detailing the chord fingering: \
+> `fingering: [{ fret: 2, barre: { from: 1, to: 5 } }, { fret: 3, string: 2, finger: 2 }]`
 >
 > ##### @param(mutedStrings: array)
 >
-> from E4 to E6\
-> array of max 6 items filled with ”yes/no/open”\
-> if not specified, value will default to “no”
+> Array of 6 items filled with ”yes/no/open”. If not specified, values will default to “no”. \
+> ` mutedStrings: ['yes', 'no', 'no', 'no', 'no', 'open'],`
 >
 > ##### @param(fretboardRange: object)
 >
-> override fretboard range with object:\
-> `{from: 1, to: 12}`
-
+> Fretboard will expand automatically based on chord length, you may override the generated freboard like this: \
+> `fretboardRange: {from: 1, to: 12}`
+>
 > ##### @param(labels: object)
 >
-> customize fret title\
-> `{ showFretNumber = true, fretNumberPrefix = 'fr' }`
+> Fret number label is shown at the bottom left. You can hide this label or customize the prefix: \
+> `labels: { showFretNumber: true, fretNumberPrefix: 'fr' }`
+
+## Support
+
+Tested on Chrome.
 
 ## License
 
 MIT © [Alexandru Calin](https://getpericles.com/)
 
-> _originally based on [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey)_
+> _inspired by [guitar-js](https://www.npmjs.com/package/guitar-js) (Fomin Sergey)_
 
 [npm-image]: https://badge.fury.io/js/chord-illustrator.svg
 [npm-url]: https://npmjs.org/package/chord-illustrator
