@@ -3,6 +3,7 @@ import ChordIllustrator from '../src/index';
 // ChordIllustrator.setHeight(128);
 ChordIllustrator.setContainer(document.body);
 ChordIllustrator.make({
+  name: 'Bm',
   mutedStrings: ['yes'],
   fingering: [
     { fret: 2, barre: { from: 1, to: 5 } },

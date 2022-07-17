@@ -1,6 +1,7 @@
 {
   "name": "chord-illustrator",
   "sideEffects": "false",
+  "type": "module",
   "version": "2.0.4",
   "description": "SVG based library which illustrates finger positions of a guitar chord on a fretboard.",
   "homepage": "https://github.com/calinalexandru/chord-illustrator-js#readme",
@@ -28,12 +29,11 @@
   "scripts": {
     "prepare": "npm run build",
     "dev": "npm run build:es -- -w",
-    "build": "npm run build:es && npm run build:cjs",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir cjs",
-    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
+    "serve": "parcel public/index.html",
+    "build": "cross-env BABEL_ENV=es babel src --out-dir es",
     "linking": "pnpm link ../constants && pnpm link ../store",
-    "test": "cross-env BABEL_ENV=test jest"
+    "test:es": "cross-env BABEL_ENV=test NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "npm run build && npm run test:es"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",

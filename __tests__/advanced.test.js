@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 import { test, expect, describe } from '@jest/globals';
-import ChordIllustrator from '../src/index';
-import saveMock from '../src/util/saveMock';
+import ChordIllustrator from '../es/index';
+import saveMock from '../es/util/saveMock';
 
 describe('advanced chords', () => {
   test('can make Am-2 chord', () => {

@@ -1,5 +1,5 @@
 import { test, expect, describe } from '@jest/globals';
-import ChordIllustrator from '../src/index';
+import ChordIllustrator from '../es/index';
 
 describe('basic types', () => {
   test('is not null', () => {
