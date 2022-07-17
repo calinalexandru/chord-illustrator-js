@@ -1,9 +1,15 @@
+let domDocument;
+
+export const setDomDocument = (doc) => {
+  domDocument = doc;
+};
+
 const appendChild = (parent, child) => {
   if (Array.isArray(child))
     child.forEach((nestedChild) => appendChild(parent, nestedChild));
   else
     parent.appendChild(
-      child?.nodeType ? child : document.createTextNode(child)
+      child?.nodeType ? child : domDocument.createTextNode(child)
     );
 };
 
@@ -15,7 +21,10 @@ export const createElement = (tag, props, ...children) => {
   }
 
   const isSvg = tag === 'svg';
-  const element = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  const element = domDocument.createElementNS(
+    'http://www.w3.org/2000/svg',
+    tag
+  );
 
   Object.entries(props || {}).forEach(([name, value]) => {
     const nameKebap = name.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);

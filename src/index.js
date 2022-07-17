@@ -1,5 +1,5 @@
 /* eslint-disable-next-line */
-import { createElement } from './jsx';
+import { createElement, setDomDocument } from './jsx';
 import Chord from './components/Chord';
 import fingeringTransform from './util/fingeringTransform';
 import fingeringWithoutBarre from './util/fingeringWithoutBarre';
@@ -18,6 +18,10 @@ export default class Illustrator {
 
   static setHeight(height) {
     Illustrator.height = height;
+  }
+
+  static setDocument(doc) {
+    setDomDocument(doc);
   }
 
   static setRenderStrategy(strategy) {
@@ -71,3 +75,8 @@ export default class Illustrator {
 Illustrator.height = 440;
 Illustrator.container = null;
 Illustrator.renderStrategy = (node) => node.outerHTML;
+try {
+  Illustrator.setDocument(document);
+} catch (e) {
+  console.warn('document remains unset');
+}
