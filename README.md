@@ -3,9 +3,10 @@
 > SVG-based library, which illustrates finger positions of a guitar chord on a fretboard.
 
 - Blazingly fast and blazingly small 🚀
+- No dependencies
 - Works on browser &amp; Node.js
-- Minified: _1.6 kB_
-- Minified + gzipped: _734 B_
+- Minified: _1.8 kB_
+- Minified + gzipped: _814 B_
 
 ## Installation
 
@@ -45,7 +46,7 @@ console.log('HTML output', svg);
 
 ## Usage in Node.js
 
-The library is tightly coupled with `window.document`. To use it on Node.js, you may want to import something like [jsdom](https://github.com/jsdom/jsdom), which implements DOM standards.
+The library is tightly coupled with `window.document`. To use it on Node.js, you may want to import something like [jsdom](https://github.com/jsdom/jsdom).
 
 ```js
 import { JSDOM } from 'jsdom';
