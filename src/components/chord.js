@@ -11,6 +11,7 @@ import {
   GUTTER_SMALL,
   GUITAR_STRINGS_STATUS,
 } from '../constants';
+import GriffBase from '../primitives/GriffBase';
 import String from '../primitives/String';
 import Fret from '../primitives/Fret';
 import Barre from '../primitives/Barre';
@@ -32,27 +33,24 @@ export default function Chord({
   maxFret = 3,
   stringsStatus = GUITAR_STRINGS_STATUS,
 }) {
+  const vertical = true;
+  const griffWidth = maxFret * FRET_MARGIN;
+  const griffHeight = 141;
   return (
     <svg
       style={{
-        height: `${height}px`,
-        width: 'auto',
+        height: vertical ? 'auto' : `${height}px`,
+        width: !vertical ? 'auto' : `${height}px`,
       }}
-      viewBox={`0 0 ${maxFret * FRET_MARGIN + 28} 141`}
+      viewBox={`0 0 ${vertical ? griffHeight : griffWidth + 28} ${
+        !vertical ? griffHeight : griffWidth + 28
+      }`}
     >
-      <rect
-        x="25"
-        y="23"
-        height="100"
-        width={maxFret * FRET_MARGIN}
-        stroke="rgb(0, 0, 0)"
-        strokeWidth="0"
-        style={{ opacity: 0.3 }}
-        fill="rgb(255, 255, 255)"
-      />
+      <GriffBase width={griffWidth} vertical={vertical} />
       <g data-name="frets-container">
         {frets.map((fretKey) => (
           <Fret
+            vertical={vertical}
             key={`fret-${fretKey}`}
             number={fretKey}
             x1={calculatePosition(FRET_MARGIN, fretKey - 1, FRET_START)}
@@ -63,6 +61,7 @@ export default function Chord({
       <g data-name="guitar-strings-container">
         {GUITAR_STRINGS.map((gstring) => (
           <String
+            vertical={vertical}
             key={`string-${gstring}`}
             number={gstring}
             y1={calculatePosition(
@@ -82,11 +81,12 @@ export default function Chord({
         ))}
       </g>
       <g data-name="guitar-neck-container">
-        <Neck stringsStatus={stringsStatus} />
+        <Neck vertical={vertical} stringsStatus={stringsStatus} />
       </g>
       <g data-name="fingers-container">
         {fingering.map(({ fret = 1, string = 1, finger }) => (
           <Finger
+            vertical={vertical}
             key={`finger-${string}-${fret}`}
             string={string}
             fret={fret}
@@ -94,7 +94,7 @@ export default function Chord({
             x={calculatePosition(FRET_MARGIN, fret - 1, BARRE_START)}
             y={calculatePosition(
               GUITAR_STRING_MARGIN,
-              string - 1,
+              vertical ? Math.abs(string - 6) : string - 1,
               GUITAR_STRING_START
             )}
           />
@@ -103,6 +103,7 @@ export default function Chord({
       {barre && (
         <g data-name="barre-container">
           <Barre
+            vertical={vertical}
             height={(barre.to - barre.from) * GUITAR_STRING_MARGIN}
             x={calculatePosition(BARRE_MARGIN, barre.fret - 1, BARRE_START)}
             y1={GUITAR_STRING_MARGIN * barre.from + GUTTER_SMALL}

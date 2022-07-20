@@ -8,7 +8,8 @@ import {
 } from '../constants';
 import calculatePosition from '../util/calculatePosition';
 
-export default function Neck({ stringsStatus = [] }) {
+export default function Neck({ vertical, stringsStatus = [] }) {
+  if (vertical) return false;
   return stringsStatus.map((status, key) =>
     status !== 'closed' ? (
       status === 'open' ? (
