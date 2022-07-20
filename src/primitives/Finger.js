@@ -1,13 +1,13 @@
 /* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
-export default function Finger({ vertical, fret, string, finger, x, y }) {
+export default function Finger({ fret, string, finger, x, y }) {
   return (
     <g data-name={`finger-${fret}-${string}`}>
       <circle
         data-name={`finger-circle-${fret}-${string}`}
-        cx={vertical ? y : x}
-        cy={vertical ? x : y}
+        cx={x}
+        cy={y}
         r="5"
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
@@ -16,8 +16,8 @@ export default function Finger({ vertical, fret, string, finger, x, y }) {
       {finger && (
         <text
           data-name={`finger-text-${fret}-${string}-${finger}`}
-          x={vertical ? y - 3 : x - 3}
-          y={vertical ? x + 4 : y + 4}
+          x={x - 3}
+          y={y + 4}
           fontSize="10"
           fontFamily="Arial"
           fontStyle="italic"

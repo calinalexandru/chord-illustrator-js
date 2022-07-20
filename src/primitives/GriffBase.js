@@ -2,7 +2,6 @@
 import { createElement } from '../jsx';
 
 export default function GriffBase({
-  vertical = false,
   x = 25,
   y = 23,
   width = 180,
@@ -12,8 +11,8 @@ export default function GriffBase({
     <rect
       x={x}
       y={y}
-      height={vertical ? width : height}
-      width={vertical ? height : width}
+      height={height}
+      width={width}
       stroke="rgb(0, 0, 0)"
       strokeWidth="0"
       style={{ opacity: 0.3 }}
