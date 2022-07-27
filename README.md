@@ -6,7 +6,7 @@
 - No dependencies
 - Works on browser &amp; Node.js
 - Minified: _1.8 kB_
-- Minified + gzipped: _814 B_
+- Minified + gzipped: _826 B_
 
 ## Installation
 
