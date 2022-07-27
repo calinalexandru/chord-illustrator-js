@@ -113,6 +113,11 @@ console.log('HTML output', svg);
 > Fret number label is shown at the bottom left. You can hide this label or customize the prefix: \
 > `labels: { showFretNumber: true, fretNumberPrefix: 'fr' }`
 
+> ##### @param(vertical: boolean)
+>
+> Display the chord vertically.\
+> `vertical: true`
+
 ## Support
 
 Tested on Chrome &amp; Node.js v17.6.0
