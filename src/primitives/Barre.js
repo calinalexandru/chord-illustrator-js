@@ -1,30 +1,38 @@
 /* eslint-disable-next-line */
 import { createElement, createFragment } from '../jsx';
 
-export default function Barre({ vertical, x, y1, y2, height, width = 10 }) {
+export default function Barre({
+  vertical,
+  x1,
+  x2,
+  y1,
+  y2,
+  height,
+  width = 10,
+}) {
   return (
     <>
       <circle
-        cx={vertical ? y1 : x}
-        cy={vertical ? x : y1}
+        cx={x1}
+        cy={y1}
         r="5"
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
       />
       <circle
-        cx={vertical ? y2 : x}
-        cy={vertical ? x : y2}
+        cx={x2}
+        cy={y2}
         r="5"
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
       />
       <rect
-        x={vertical ? y1 : x - 5}
-        y={vertical ? x - 5 : y1}
-        height={vertical ? width : height}
-        width={vertical ? height : width}
+        x={vertical ? x1 : x1 - 5}
+        y={vertical ? y1 - 5 : y1 - 5}
+        height={height}
+        width={width}
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"

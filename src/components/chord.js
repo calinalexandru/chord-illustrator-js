@@ -40,6 +40,30 @@ export default function Chord({
   const griffHeight = vertical ? maxFret * FRET_MARGIN : 100;
   const griffWidth = vertical ? griffHeight : maxFret * FRET_MARGIN;
   const griffViewboxHeight = 141;
+  let barreX;
+  let barreY1;
+  let barreY2;
+  let barreWidth;
+  let barreHeight;
+  if (barre) {
+    console.log('barre', barre);
+    // 1 2 3 4 5 6
+    // 1 2 3 4 5 6
+    // 6 5 4 3 2 1
+    // 1 to 5
+    // barre.to = 6;
+    // barre.from = 2;
+    barreX = calculatePosition(BARRE_MARGIN, barre.fret - 1, BARRE_START);
+    barreY1 =
+      GUITAR_STRING_MARGIN * (vertical ? Math.abs(barre.to - 7) : barre.from) +
+      GUTTER_SMALL;
+    barreY2 =
+      GUITAR_STRING_MARGIN * (vertical ? Math.abs(barre.from - 7) : barre.to) +
+      GUTTER_SMALL;
+    barreWidth = 10;
+    barreHeight = (barre.to - barre.from) * GUITAR_STRING_MARGIN;
+  }
+
   return (
     <svg
       style={{
@@ -114,10 +138,12 @@ export default function Chord({
         <g data-name="barre-container">
           <Barre
             vertical={vertical}
-            height={(barre.to - barre.from) * GUITAR_STRING_MARGIN}
-            x={calculatePosition(BARRE_MARGIN, barre.fret - 1, BARRE_START)}
-            y1={GUITAR_STRING_MARGIN * barre.from + GUTTER_SMALL}
-            y2={GUITAR_STRING_MARGIN * barre.to + GUTTER_SMALL}
+            width={vertical ? barreHeight : barreWidth}
+            height={vertical ? barreWidth : barreHeight}
+            x1={vertical ? barreY1 : barreX}
+            x2={vertical ? barreY2 : barreX}
+            y1={vertical ? barreX : barreY1}
+            y2={vertical ? barreX : barreY2}
           />
         </g>
       )}
