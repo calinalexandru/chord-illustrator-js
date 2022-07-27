@@ -34,6 +34,7 @@ export default class Illustrator {
     fretboardRange = {},
     mutedStrings = [],
     labels = {},
+    vertical = false,
   } = {}) {
     const { showFretNumber = true, fretNumberPrefix = 'fr' } = labels;
     const hasRange = !!Object.keys(fretboardRange).length;
@@ -55,6 +56,7 @@ export default class Illustrator {
 
     const chordRendered = (
       <Chord
+        vertical={vertical}
         height={Illustrator.height}
         fretNumberTitle={hasRange ? fretboardRange.from : minFret}
         fretNumberPrefix={fretNumberPrefix}

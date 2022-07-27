@@ -1,11 +1,18 @@
 /* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
-export default function Title({ name }) {
+export default function Title({
+  x1 = 115,
+  x2 = 72,
+  y1 = 13,
+  y2 = 9,
+  vertical,
+  name,
+}) {
   return (
     <text
-      x="115"
-      y="13"
+      x={vertical ? x2 : x1}
+      y={vertical ? y2 : y1}
       fontFamily="Courier"
       fill="rgb(0, 0, 0)"
       textAnchor="middle"

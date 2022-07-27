@@ -29,12 +29,12 @@ export default function Chord({
   fretNumberPrefix = 'fr',
   showFretNumber = true,
   fingering = [],
+  vertical = false,
   barre = false,
   frets = [],
   maxFret = 3,
   stringsStatus = GUITAR_STRINGS_STATUS,
 }) {
-  const vertical = true;
   let x1Buffer;
   let y1Buffer;
   const griffHeight = vertical ? maxFret * FRET_MARGIN : 100;
@@ -46,13 +46,6 @@ export default function Chord({
   let barreWidth;
   let barreHeight;
   if (barre) {
-    console.log('barre', barre);
-    // 1 2 3 4 5 6
-    // 1 2 3 4 5 6
-    // 6 5 4 3 2 1
-    // 1 to 5
-    // barre.to = 6;
-    // barre.from = 2;
     barreX = calculatePosition(BARRE_MARGIN, barre.fret - 1, BARRE_START);
     barreY1 =
       GUITAR_STRING_MARGIN * (vertical ? Math.abs(barre.to - 7) : barre.from) +
@@ -112,7 +105,10 @@ export default function Chord({
         })}
       </g>
       <g data-name="guitar-neck-container">
-        <Neck vertical={vertical} stringsStatus={stringsStatus} />
+        <Neck
+          vertical={vertical}
+          stringsStatus={vertical ? stringsStatus.reverse() : stringsStatus}
+        />
       </g>
       <g data-name="fingers-container">
         {fingering.map(({ fret = 1, string = 1, finger }) => {
@@ -148,9 +144,13 @@ export default function Chord({
         </g>
       )}
       {showFretNumber && (
-        <FretTitle number={fretNumberTitle} prefix={fretNumberPrefix} />
+        <FretTitle
+          vertical={vertical}
+          number={fretNumberTitle}
+          prefix={fretNumberPrefix}
+        />
       )}
-      {name && <Title name={name} />}
+      {name && <Title vertical={vertical} name={name} />}
     </svg>
   );
 }

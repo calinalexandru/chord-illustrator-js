@@ -9,13 +9,21 @@ import {
 import calculatePosition from '../util/calculatePosition';
 
 export default function Neck({ vertical, stringsStatus = [] }) {
-  if (vertical) return false;
-  return stringsStatus.map((status, key) =>
-    status !== 'closed' ? (
+  const xNeck = 15;
+  const x1 = 10;
+  const x2 = 20;
+  let y1;
+  let y2;
+  let yNeck;
+  return stringsStatus.map((status, key) => {
+    yNeck = calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_STRING_START);
+    y1 = calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START);
+    y2 = calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START) + 10;
+    return status !== 'closed' ? (
       status === 'open' ? (
         <circle
-          cx="15"
-          cy={calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_STRING_START)}
+          cx={vertical ? yNeck : xNeck}
+          cy={vertical ? xNeck : yNeck}
           r="5"
           stroke="rgb(0, 0, 0)"
           strokeWidth="1"
@@ -25,25 +33,19 @@ export default function Neck({ vertical, stringsStatus = [] }) {
       ) : (
         <>
           <line
-            x1="10"
-            y1={calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START)}
-            x2="20"
-            y2={
-              calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START) +
-              10
-            }
+            x1={vertical ? y1 : x1}
+            y1={vertical ? x1 : y1}
+            x2={vertical ? y2 : x2}
+            y2={vertical ? x2 : y2}
             stroke="rgb(0, 0, 0)"
             style={{ opacity: 0.3 }}
             strokeWidth="1"
           />
           <line
-            x1="20"
-            y1={calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START)}
-            x2="10"
-            y2={
-              calculatePosition(GUITAR_STRING_MARGIN, key, GUITAR_NECK_START) +
-              10
-            }
+            x1={vertical ? y1 : x2}
+            y1={vertical ? x2 : y1}
+            x2={vertical ? y2 : x1}
+            y2={vertical ? x1 : y2}
             stroke="rgb(0, 0, 0)"
             style={{ opacity: 0.3 }}
             strokeWidth="1"
@@ -52,6 +54,6 @@ export default function Neck({ vertical, stringsStatus = [] }) {
       )
     ) : (
       false
-    )
-  );
+    );
+  });
 }
