@@ -27,6 +27,7 @@ export default function Chord({
   height,
   fretNumberTitle = 1,
   fretNumberPrefix = 'fr',
+  showTitle = true,
   showFretNumber = true,
   fingering = [],
   vertical = false,
@@ -34,6 +35,10 @@ export default function Chord({
   frets = [],
   maxFret = 3,
   stringsStatus = GUITAR_STRINGS_STATUS,
+  titleStyle,
+  fretStyle,
+  stringStyle,
+  fretNumberStyle,
 }) {
   let x1Buffer;
   let y1Buffer;
@@ -73,6 +78,7 @@ export default function Chord({
           x1Buffer = calculatePosition(FRET_MARGIN, fretKey - 1, FRET_START);
           return (
             <Fret
+              style={fretStyle}
               key={`fret-${fretKey}`}
               number={fretKey}
               y1={vertical ? x1Buffer : GUITAR_STRING_MARGIN}
@@ -94,6 +100,7 @@ export default function Chord({
             calculatePosition(FRET_MARGIN, maxFret, GUITAR_STRING_START) + 2;
           return (
             <String
+              style={stringStyle}
               key={`string-${gstring}`}
               number={gstring}
               y1={vertical ? 25 : x1Buffer}
@@ -148,9 +155,12 @@ export default function Chord({
           vertical={vertical}
           number={fretNumberTitle}
           prefix={fretNumberPrefix}
+          style={fretNumberStyle}
         />
       )}
-      {name && <Title vertical={vertical} name={name} />}
+      {name && showTitle && (
+        <Title vertical={vertical} style={titleStyle} name={name} />
+      )}
     </svg>
   );
 }

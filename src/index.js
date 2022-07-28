@@ -35,8 +35,20 @@ export default class Illustrator {
     mutedStrings = [],
     labels = {},
     vertical = false,
+    chord = {},
   } = {}) {
-    const { showFretNumber = true, fretNumberPrefix = 'fr' } = labels;
+    const {
+      fretNumber: {
+        prefix: fretNumberPrefix = 'fr',
+        show: showFretNumber = true,
+        style: fretNumberStyle = {},
+      },
+      title: { show: showTitle = true, style: titleStyle },
+    } = labels;
+    const {
+      fret: { style: fretStyle },
+      string: { style: stringStyle },
+    } = chord;
     const hasRange = !!Object.keys(fretboardRange).length;
     const minFret = getMinFret(fingering);
     const linearMargin = isLinearChord(fingering) ? 2 : 1;
@@ -61,12 +73,17 @@ export default class Illustrator {
         fretNumberTitle={hasRange ? fretboardRange.from : minFret}
         fretNumberPrefix={fretNumberPrefix}
         showFretNumber={showFretNumber}
+        showTitle={showTitle}
         frets={frets}
         name={name || false}
         maxFret={maxFret}
         fingering={fingersParsedWithoutBarre}
         barre={barreTransformed}
         stringsStatus={stringsStatus}
+        titleStyle={titleStyle}
+        fretStyle={fretStyle}
+        stringStyle={stringStyle}
+        fretNumberStyle={fretNumberStyle}
       />
     );
     if (Illustrator.container) Illustrator.container.appendChild(chordRendered);

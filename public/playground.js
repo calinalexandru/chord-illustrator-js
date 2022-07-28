@@ -11,6 +11,14 @@ ChordIllustrator.make({
     { fret: 2, string: 3, finger: 2 },
     { fret: 3, string: 2, finger: 3 },
   ],
+  labels: {
+    title: { style: { fill: 'blue', opacity: 1 } },
+    fretNumber: { style: { fill: 'red', opacity: 1 } },
+  },
+  chord: {
+    string: { style: { stroke: 'blue' } },
+    fret: { style: { stroke: 'black' } },
+  },
 });
 // ChordIllustrator.make({
 //   name: 'Bm',

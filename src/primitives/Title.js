@@ -2,6 +2,7 @@
 import { createElement } from '../jsx';
 
 export default function Title({
+  style,
   x1 = 115,
   x2 = 72,
   y1 = 13,
@@ -16,6 +17,7 @@ export default function Title({
       fontFamily="Courier"
       fill="rgb(0, 0, 0)"
       textAnchor="middle"
+      style={style}
     >
       {name}
     </text>

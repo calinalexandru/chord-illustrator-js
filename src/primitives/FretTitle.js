@@ -7,6 +7,7 @@ export default function FretTitle({
   y1 = 138,
   y2 = 36,
   vertical,
+  style,
   prefix,
   number,
 }) {
@@ -17,7 +18,7 @@ export default function FretTitle({
       fontSize="12"
       fontFamily="Courier"
       fontWeight="bold"
-      style={{ opacity: 0.3 }}
+      style={{ opacity: 0.3, ...style }}
       fill="rgb(0, 0, 0)"
     >
       {`${prefix}${number}`}

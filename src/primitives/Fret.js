@@ -1,7 +1,7 @@
 /* eslint-disable-next-line */
 import { createElement } from '../jsx';
 
-export default function Fret({ number, x1, y1, y2, x2 }) {
+export default function Fret({ number, style, x1, y1, y2, x2 }) {
   return (
     <line
       data-name={`fret-${number}`}
@@ -11,6 +11,7 @@ export default function Fret({ number, x1, y1, y2, x2 }) {
       y2={y2}
       strokeWidth="3"
       stroke="#472611"
+      style={style}
     />
   );
 }
