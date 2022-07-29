@@ -31,7 +31,6 @@
     "dev": "npm run build -- -w",
     "serve": "parcel public/index.html",
     "build": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "linking": "pnpm link ../constants && pnpm link ../store",
     "test:es": "cross-env BABEL_ENV=test NODE_OPTIONS=--experimental-vm-modules jest",
     "test": "npm run build && npm run test:es"
   },

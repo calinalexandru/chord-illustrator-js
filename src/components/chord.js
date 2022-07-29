@@ -38,6 +38,9 @@ export default function Chord({
   titleStyle,
   fretStyle,
   stringStyle,
+  fingerStyle,
+  fingerTextStyle,
+  neckStyle,
   fretNumberStyle,
 }) {
   let x1Buffer;
@@ -113,6 +116,7 @@ export default function Chord({
       </g>
       <g data-name="guitar-neck-container">
         <Neck
+          style={neckStyle}
           vertical={vertical}
           stringsStatus={vertical ? stringsStatus.reverse() : stringsStatus}
         />
@@ -127,6 +131,8 @@ export default function Chord({
           );
           return (
             <Finger
+              textStyle={fingerTextStyle}
+              style={fingerStyle}
               key={`finger-${string}-${fret}`}
               string={string}
               fret={fret}

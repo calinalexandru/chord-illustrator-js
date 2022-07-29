@@ -2,6 +2,7 @@
 import { createElement, createFragment } from '../jsx';
 
 export default function Barre({
+  style = {},
   vertical,
   x1,
   x2,
@@ -19,6 +20,7 @@ export default function Barre({
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
+        style={style}
       />
       <circle
         cx={x2}
@@ -27,6 +29,7 @@ export default function Barre({
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
+        style={style}
       />
       <rect
         x={vertical ? x1 : x1 - 5}
@@ -36,6 +39,7 @@ export default function Barre({
         stroke="rgb(0, 0, 0)"
         strokeWidth="1"
         fill="rgb(0, 0, 0)"
+        style={style}
       />
     </>
   );

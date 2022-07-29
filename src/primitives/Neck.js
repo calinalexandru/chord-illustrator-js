@@ -8,7 +8,7 @@ import {
 } from '../constants';
 import calculatePosition from '../util/calculatePosition';
 
-export default function Neck({ vertical, stringsStatus = [] }) {
+export default function Neck({ style = {}, vertical, stringsStatus = [] }) {
   const xNeck = 15;
   const x1 = 10;
   const x2 = 20;
@@ -27,7 +27,7 @@ export default function Neck({ vertical, stringsStatus = [] }) {
           r="5"
           stroke="rgb(0, 0, 0)"
           strokeWidth="1"
-          style={{ opacity: 0.3 }}
+          style={{ opacity: 0.3, ...style }}
           fill="rgb(255, 255, 255)"
         />
       ) : (
@@ -38,7 +38,7 @@ export default function Neck({ vertical, stringsStatus = [] }) {
             x2={vertical ? y2 : x2}
             y2={vertical ? x2 : y2}
             stroke="rgb(0, 0, 0)"
-            style={{ opacity: 0.3 }}
+            style={{ opacity: 0.3, ...style }}
             strokeWidth="1"
           />
           <line
@@ -47,7 +47,7 @@ export default function Neck({ vertical, stringsStatus = [] }) {
             x2={vertical ? y2 : x1}
             y2={vertical ? x1 : y2}
             stroke="rgb(0, 0, 0)"
-            style={{ opacity: 0.3 }}
+            style={{ opacity: 0.3, ...style }}
             strokeWidth="1"
           />
         </>

@@ -2,7 +2,7 @@
 import { createElement } from '../jsx';
 
 export default function Title({
-  style,
+  style = {},
   x1 = 115,
   x2 = 72,
   y1 = 13,
@@ -14,6 +14,7 @@ export default function Title({
     <text
       x={vertical ? x2 : x1}
       y={vertical ? y2 : y1}
+      data-name="title"
       fontFamily="Courier"
       fill="rgb(0, 0, 0)"
       textAnchor="middle"

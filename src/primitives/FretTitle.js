@@ -7,7 +7,7 @@ export default function FretTitle({
   y1 = 138,
   y2 = 36,
   vertical,
-  style,
+  style = {},
   prefix,
   number,
 }) {
@@ -15,6 +15,7 @@ export default function FretTitle({
     <text
       x={vertical ? x2 : x1}
       y={vertical ? y2 : y1}
+      data-name="fretTitle"
       fontSize="12"
       fontFamily="Courier"
       fontWeight="bold"

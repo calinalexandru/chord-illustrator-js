@@ -6,6 +6,8 @@ import { test, expect, describe } from '@jest/globals';
 import ChordIllustrator from '../es/index';
 import saveMock from '../es/util/saveMock';
 
+ChordIllustrator.setRenderStrategy((node) => node);
+
 // const renderToStaticMarkup = (dom) => dom.outerHTML;
 // const container = document.createElement('div');
 // document.body.appendChild(container);
@@ -25,24 +27,38 @@ describe('basic chords', () => {
       ],
     });
 
-    saveMock('basic/Bm', testChord);
-    expect(testChord).toContain(
-      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
+    saveMock('basic/Bm', testChord.outerHTML);
+    expect(testChord.tagName).toBe('svg');
+    expect(testChord.querySelector('[data-name="title"]').outerHTML).toContain(
+      'Bm'
     );
-    expect(testChord).toContain(
-      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Bm</text>`
-    );
-    expect(testChord).toContain(`<g data-name="fingers-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
-    expect(testChord).toContain(`<g data-name="frets-container">`);
-    expect(testChord).toContain(`<g data-name="barre-container">`);
-    expect(testChord).toContain(`<g data-name="finger-2-2">`);
-    expect(testChord).toContain(`<g data-name="finger-3-3">`);
-    expect(testChord).toContain(`<g data-name="finger-3-4">`);
-    expect(testChord).toContain(`data-name="finger-text-2-2-2"`);
-    expect(testChord).toContain(`data-name="finger-text-3-3-3"`);
-    expect(testChord).toContain(`data-name="finger-text-3-4-4"`);
+    expect(
+      testChord.querySelector('g[data-name="fingers-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-strings-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-neck-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="frets-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="barre-container"]')
+    ).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-2"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-3-3"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-3-4"]')).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-2-2"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-3-3-3"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-3-4-4"]')
+    ).toBeTruthy();
   });
 
   test('can make Am chord', () => {
@@ -55,23 +71,35 @@ describe('basic chords', () => {
         { fret: 2, string: 4, finger: 3 },
       ],
     });
-    saveMock('basic/Am', testChord);
-    expect(testChord).toContain(
-      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
+    saveMock('basic/Am', testChord.outerHTML);
+    expect(testChord.tagName).toContain('svg');
+    expect(testChord.querySelector('[data-name="title"]').outerHTML).toContain(
+      'Am'
     );
-    expect(testChord).toContain(
-      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Am</text>`
-    );
-    expect(testChord).toContain(`<g data-name="fingers-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
-    expect(testChord).toContain(`<g data-name="frets-container">`);
-    expect(testChord).toContain(`<g data-name="finger-1-2">`);
-    expect(testChord).toContain(`<g data-name="finger-2-3">`);
-    expect(testChord).toContain(`<g data-name="finger-2-4">`);
-    expect(testChord).toContain(`data-name="finger-text-1-2-1"`);
-    expect(testChord).toContain(`data-name="finger-text-2-3-2"`);
-    expect(testChord).toContain(`data-name="finger-text-2-4-3"`);
+    expect(
+      testChord.querySelector('g[data-name="fingers-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-strings-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-neck-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="frets-container"]')
+    ).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-1-2"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-3"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-4"]')).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-1-2-1"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-3-2"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-4-3"]')
+    ).toBeTruthy();
   });
 
   test('can make Em chord', () => {
@@ -82,21 +110,31 @@ describe('basic chords', () => {
         { fret: 2, string: 5, finger: 3 },
       ],
     });
-    saveMock('basic/Em', testChord);
-    expect(testChord).toContain(
-      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
+    saveMock('basic/Em', testChord.outerHTML);
+    expect(testChord.tagName).toContain('svg');
+    expect(testChord.querySelector('[data-name="title"]').outerHTML).toContain(
+      'Em'
     );
-    expect(testChord).toContain(
-      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Em</text>`
-    );
-    expect(testChord).toContain(`<g data-name="fingers-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
-    expect(testChord).toContain(`<g data-name="frets-container">`);
-    expect(testChord).toContain(`<g data-name="finger-2-4">`);
-    expect(testChord).toContain(`<g data-name="finger-2-5">`);
-    expect(testChord).toContain(`data-name="finger-text-2-4-2"`);
-    expect(testChord).toContain(`data-name="finger-text-2-5-3"`);
+    expect(
+      testChord.querySelector('g[data-name="fingers-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-strings-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-neck-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="frets-container"]')
+    ).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-4"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-5"]')).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-4-2"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-5-3"]')
+    ).toBeTruthy();
   });
 
   test('can make Dm chord', () => {
@@ -109,22 +147,34 @@ describe('basic chords', () => {
         { fret: 3, string: 2, finger: 3 },
       ],
     });
-    saveMock('basic/Dm', testChord);
-    expect(testChord).toContain(
-      `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="height:440px;width:auto" viewBox="0 0 208 141">`
+    saveMock('basic/Dm', testChord.outerHTML);
+    expect(testChord.tagName).toContain('svg');
+    expect(testChord.querySelector('[data-name="title"]').outerHTML).toContain(
+      'Dm'
     );
-    expect(testChord).toContain(
-      `<text x="115" y="13" font-family="Courier" fill="rgb(0, 0, 0)" text-anchor="middle">Dm</text>`
-    );
-    expect(testChord).toContain(`<g data-name="fingers-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-strings-container">`);
-    expect(testChord).toContain(`<g data-name="guitar-neck-container">`);
-    expect(testChord).toContain(`<g data-name="frets-container">`);
-    expect(testChord).toContain(`<g data-name="finger-1-1">`);
-    expect(testChord).toContain(`<g data-name="finger-2-3">`);
-    expect(testChord).toContain(`<g data-name="finger-3-2">`);
-    expect(testChord).toContain(`data-name="finger-text-1-1-1"`);
-    expect(testChord).toContain(`data-name="finger-text-2-3-2"`);
-    expect(testChord).toContain(`data-name="finger-text-3-2-3"`);
+    expect(
+      testChord.querySelector('g[data-name="fingers-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-strings-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="guitar-neck-container"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('g[data-name="frets-container"]')
+    ).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-1-1"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-2-3"]')).toBeTruthy();
+    expect(testChord.querySelector('g[data-name="finger-3-2"]')).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-1-1-1"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-2-3-2"]')
+    ).toBeTruthy();
+    expect(
+      testChord.querySelector('[data-name="finger-text-3-2-3"]')
+    ).toBeTruthy();
   });
 });

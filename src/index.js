@@ -35,20 +35,23 @@ export default class Illustrator {
     mutedStrings = [],
     labels = {},
     vertical = false,
-    chord = {},
+    fretboard = {},
   } = {}) {
     const {
       fretNumber: {
         prefix: fretNumberPrefix = 'fr',
         show: showFretNumber = true,
         style: fretNumberStyle = {},
-      },
-      title: { show: showTitle = true, style: titleStyle },
+      } = {},
+      title: { show: showTitle = true, style: titleStyle } = {},
     } = labels;
     const {
-      fret: { style: fretStyle },
-      string: { style: stringStyle },
-    } = chord;
+      fret: { style: fretStyle } = {},
+      string: { style: stringStyle } = {},
+      finger: { style: fingerStyle } = {},
+      fingerText: { style: fingerTextStyle } = {},
+      neck: { style: neckStyle } = {},
+    } = fretboard;
     const hasRange = !!Object.keys(fretboardRange).length;
     const minFret = getMinFret(fingering);
     const linearMargin = isLinearChord(fingering) ? 2 : 1;
@@ -83,6 +86,9 @@ export default class Illustrator {
         titleStyle={titleStyle}
         fretStyle={fretStyle}
         stringStyle={stringStyle}
+        fingerStyle={fingerStyle}
+        neckStyle={neckStyle}
+        fingerTextStyle={fingerTextStyle}
         fretNumberStyle={fretNumberStyle}
       />
     );
