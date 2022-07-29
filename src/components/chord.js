@@ -41,6 +41,7 @@ export default function Chord({
   fingerStyle,
   fingerTextStyle,
   neckStyle,
+  barreStyle,
   fretNumberStyle,
 }) {
   let x1Buffer;
@@ -144,17 +145,16 @@ export default function Chord({
         })}
       </g>
       {barre && (
-        <g data-name="barre-container">
-          <Barre
-            vertical={vertical}
-            width={vertical ? barreHeight : barreWidth}
-            height={vertical ? barreWidth : barreHeight}
-            x1={vertical ? barreY1 : barreX}
-            x2={vertical ? barreY2 : barreX}
-            y1={vertical ? barreX : barreY1}
-            y2={vertical ? barreX : barreY2}
-          />
-        </g>
+        <Barre
+          style={barreStyle}
+          vertical={vertical}
+          width={vertical ? barreHeight : barreWidth}
+          height={vertical ? barreWidth : barreHeight}
+          x1={vertical ? barreY1 : barreX}
+          x2={vertical ? barreY2 : barreX}
+          y1={vertical ? barreX : barreY1}
+          y2={vertical ? barreX : barreY2}
+        />
       )}
       {showFretNumber && (
         <FretTitle

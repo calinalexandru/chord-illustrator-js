@@ -49,6 +49,7 @@ export default class Illustrator {
       fret: { style: fretStyle } = {},
       string: { style: stringStyle } = {},
       finger: { style: fingerStyle } = {},
+      barre: { style: barreStyle } = {},
       fingerText: { style: fingerTextStyle } = {},
       neck: { style: neckStyle } = {},
     } = fretboard;
@@ -90,6 +91,7 @@ export default class Illustrator {
         neckStyle={neckStyle}
         fingerTextStyle={fingerTextStyle}
         fretNumberStyle={fretNumberStyle}
+        barreStyle={barreStyle}
       />
     );
     if (Illustrator.container) Illustrator.container.appendChild(chordRendered);

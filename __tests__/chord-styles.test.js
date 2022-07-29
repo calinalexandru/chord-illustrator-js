@@ -35,6 +35,7 @@ describe('chord styles', () => {
         finger: { style: { stroke: 'brown' } },
         fingerText: { style: { stroke: 'purple' } },
         neck: { style: { stroke: 'red' } },
+        barre: { style: { fill: 'blue' } },
       },
     });
 
@@ -61,7 +62,8 @@ describe('chord styles', () => {
       testChord.querySelector('[data-common-name="finger-circle"]').style.stroke
     ).toBe('brown');
     expect(
-      testChord.querySelector('[data-common-name="finger-text"]').style.stroke
-    ).toBe('purple');
+      testChord.querySelector('g[data-name="barre-container"] circle').style
+        .fill
+    ).toBe('blue');
   });
 });

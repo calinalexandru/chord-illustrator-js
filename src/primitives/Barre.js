@@ -12,7 +12,7 @@ export default function Barre({
   width = 10,
 }) {
   return (
-    <>
+    <g data-name="barre-container">
       <circle
         cx={x1}
         cy={y1}
@@ -41,6 +41,6 @@ export default function Barre({
         fill="rgb(0, 0, 0)"
         style={style}
       />
-    </>
+    </g>
   );
 }
