@@ -88,40 +88,72 @@ console.log('HTML output', svg);
 
 - specify the chord options by passing an object. Only `fingering` property is mandatory, and others are optional.
 
-> ##### @param(name: string)
->
-> Title displayed at the top. Omit the property to hide. \
-> ` name: 'Am'`
->
-> ##### @param(fingering: array)
->
-> Mandatory property detailing the chord fingering: \
-> `fingering: [{ fret: 2, barre: { from: 1, to: 5 } }, { fret: 3, string: 2, finger: 2 }]`
->
-> ##### @param(mutedStrings: array)
->
-> Array of 6 items filled with ”yes/no/open”. If not specified, values will default to “no”. \
-> ` mutedStrings: ['yes', 'no', 'no', 'no', 'no', 'open'],`
->
-> ##### @param(fretboardRange: object)
->
-> Fretboard will expand automatically based on chord length. You may override the generated fretboard like this: \
-> `fretboardRange: {from: 1, to: 12}`
->
-> ##### @param(labels: object)
->
-> Fret number label is shown at the bottom left. You can hide this label or customize the prefix: \
-> ` labels: {
+##### @param(name: string)
 
-    title: { style: { fill: 'blue', opacity: 1 } },
-    fretNumber: { style: { fill: 'red', opacity: 1 } },
+Title displayed at the top. Omit the property to hide.
 
-}`
+```js
+name: 'Am';
+```
 
-> ##### @param(vertical: boolean)
->
-> Display the chord vertically.\
-> `vertical: true`
+##### @param(fingering: array)
+
+Mandatory property detailing the chord fingering:
+
+```js
+fingering: [
+  { fret: 2, barre: { from: 1, to: 5 } },
+  { fret: 3, string: 2, finger: 2 },
+];
+```
+
+##### @param(mutedStrings: array)
+
+Array of 6 items filled with ”yes/no/open”. If not specified, values will default to “no”.
+
+```js
+mutedStrings: ['yes', 'no', 'no', 'no', 'no', 'open'];
+```
+
+##### @param(fretboardRange: object)
+
+Fretboard will expand automatically based on chord length. You may override the generated fretboard like this:
+
+```js
+fretboardRange: { from: 1, to: 12 }
+```
+
+##### @param(labels: object)
+
+Fret number label is shown at the bottom left. You can hide this label or customize the prefix: \
+
+```js
+labels: {
+  title: { style: { show: false, fill: 'blue', opacity: 1 } },
+  fretNumber: { style: { show: false, fill: 'red', opacity: 1 } },
+}
+```
+
+You can customize the whole SVG fretboard using this object.
+
+```js
+fretboard: {
+  fret: { style: { stroke: 'red', fill: 'red' } },
+  string: { style: { stroke: 'green', fill: 'green' } },
+  neck: { style: { stroke: 'blue', fill: 'blue' } },
+  barre: { style: { stroke: 'gray', fill: 'gray' } },
+  finger: { style: { stroke: 'yellow', fill: 'yellow' } },
+  fingerText: { style: { stroke: 'orange', fill: 'orange' } },
+}
+```
+
+##### @param(vertical: boolean)
+
+Display the chord vertically.
+
+```js
+vertical: true;
+```
 
 ## Support
 
