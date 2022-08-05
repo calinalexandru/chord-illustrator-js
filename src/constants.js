@@ -9,12 +9,12 @@ export const BARRE_START = 55;
 export const BARRE_MARGIN = 60;
 export const GUITAR_STRINGS = [0, 1, 2, 3, 4, 5];
 export const GUITAR_STRINGS_STATUS = [
-  'closed',
-  'closed',
-  'closed',
-  'closed',
-  'closed',
-  'closed',
+  'open',
+  'open',
+  'open',
+  'open',
+  'open',
+  'open',
 ];
 export const STRINGS_STATUS_MAP = {
   yes: 'muted',

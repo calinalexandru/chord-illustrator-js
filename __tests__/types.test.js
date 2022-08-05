@@ -13,7 +13,16 @@ describe('basic types', () => {
   test('has set height', () => {
     expect(typeof ChordIllustrator.setHeight).toBe('function');
   });
+
   test('has set container', () => {
     expect(typeof ChordIllustrator.setContainer).toBe('function');
+  });
+
+  test('has set render strategy', () => {
+    expect(typeof ChordIllustrator.setRenderStrategy).toBe('function');
+  });
+
+  test('has set document', () => {
+    expect(typeof ChordIllustrator.setDocument).toBe('function');
   });
 });

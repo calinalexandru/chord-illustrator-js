@@ -33,7 +33,7 @@ export default function Barre({
       />
       <rect
         x={vertical ? x1 : x1 - 5}
-        y={vertical ? y1 - 5 : y1 - 5}
+        y={vertical ? y1 - 5 : y1}
         height={height}
         width={width}
         stroke="rgb(0, 0, 0)"

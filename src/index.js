@@ -9,6 +9,7 @@ import getFretboardRange from './util/getFretboardRange';
 import getArrayRange from './util/getArrayRange';
 import getMaxFret from './util/getMaxFret';
 import stringsStatusTransform from './util/stringsStatusTransform';
+import getStringsStatusFromFingering from './util/getStringsStatusFromStrings';
 import isLinearChord from './predicates/isLinearChord';
 
 export default class Illustrator {
@@ -68,7 +69,10 @@ export default class Illustrator {
       : getMaxFret(fingersParsed);
     const fingersParsedWithoutBarre = fingeringWithoutBarre(fingersParsed);
 
-    const stringsStatus = stringsStatusTransform(mutedStrings);
+    const stringsStatus = stringsStatusTransform(
+      getStringsStatusFromFingering(fingering.map((finger) => finger.string)),
+      mutedStrings
+    );
 
     const chordRendered = (
       <Chord

@@ -53,4 +53,35 @@ describe('chords optionals', () => {
       testChord.querySelector('[data-name="finger-text-12-6-4"]')
     ).toBeTruthy();
   });
+
+  test('can define vertical chord', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'E',
+      vertical: true,
+      fingering: [
+        { fret: 2, string: 4, finger: 2 },
+        { fret: 2, string: 5, finger: 3 },
+      ],
+    });
+
+    saveMock('services/E-vertical', testChord.outerHTML);
+    expect(
+      testChord.querySelector('[data-name="fretTitle"]')
+    ).toBeTruthy();
+  });
+
+  test('open strings are auto set', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'E',
+      fingering: [
+        { fret: 2, string: 4, finger: 2 },
+        { fret: 2, string: 5, finger: 3 },
+      ],
+    });
+
+    saveMock('services/E', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(4);
+  });
 });

@@ -22,6 +22,7 @@ export default function Neck({ style = {}, vertical, stringsStatus = [] }) {
     return status !== 'closed' ? (
       status === 'open' ? (
         <circle
+          data-name="neck-item-open-string"
           cx={vertical ? yNeck : xNeck}
           cy={vertical ? xNeck : yNeck}
           r="5"
@@ -31,8 +32,9 @@ export default function Neck({ style = {}, vertical, stringsStatus = [] }) {
           fill="rgb(255, 255, 255)"
         />
       ) : (
-        <>
+        <g data-name="neck-item-muted-string">
           <line
+            data-name="neck-item-muted-string-line-1"
             x1={vertical ? y1 : x1}
             y1={vertical ? x1 : y1}
             x2={vertical ? y2 : x2}
@@ -42,6 +44,7 @@ export default function Neck({ style = {}, vertical, stringsStatus = [] }) {
             strokeWidth="1"
           />
           <line
+            data-name="neck-item-muted-string-line-2"
             x1={vertical ? y1 : x2}
             y1={vertical ? x2 : y1}
             x2={vertical ? y2 : x1}
@@ -50,7 +53,7 @@ export default function Neck({ style = {}, vertical, stringsStatus = [] }) {
             style={{ opacity: 0.3, ...style }}
             strokeWidth="1"
           />
-        </>
+        </g>
       )
     ) : (
       false

@@ -5,7 +5,7 @@ ChordIllustrator.setContainer(document.body);
 ChordIllustrator.make({
   name: 'Dm',
   vertical: false,
-  mutedStrings: ['yes', 'yes', 'open'],
+  mutedStrings: ['yes'],
   fingering: [
     { fret: 1, string: 1, finger: 1 },
     { fret: 2, string: 3, finger: 2 },
