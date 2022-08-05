@@ -5,8 +5,8 @@
 - Blazingly fast and blazingly small 🚀
 - No dependencies
 - Works on browser &amp; Node.js
-- Minified: _2.1 kB_
-- Minified + gzipped: _938 B_
+- Minified: _2.3 kB_
+- Minified + gzipped: _970 B_
 
 ## Installation
 
