@@ -21,7 +21,7 @@ $ npm install --save chord-illustrator
 ```js
 import ChordIllustrator from 'chord-illustrator';
 
-// insert it into any html element
+// insert it into any HTML element
 ChordIllustrator.setContainer(document.body);
 
 // or get output directly
@@ -90,7 +90,7 @@ console.log('HTML output', svg);
 
 ##### @param(name: string)
 
-Title displayed at the top. Omit the property to hide.
+The title is displayed at the top. Omit the property to hide.
 
 ```js
 name: 'Am';
@@ -109,7 +109,7 @@ fingering: [
 
 ##### @param(mutedStrings: array)
 
-Array of 6 items filled with ”yes/no/open”. If not specified, values will default to “no”.
+An array of 6 items filled with ”yes/no/open”. If not specified, values will default to “no”.
 
 ```js
 mutedStrings: ['yes', 'no', 'no', 'no', 'no', 'open'];
@@ -117,7 +117,7 @@ mutedStrings: ['yes', 'no', 'no', 'no', 'no', 'open'];
 
 ##### @param(fretboardRange: object)
 
-Fretboard will expand automatically based on chord length. You may override the generated fretboard like this:
+The fretboard will expand automatically based on chord length. You may override the generated fretboard like this:
 
 ```js
 fretboardRange: { from: 1, to: 12 }
@@ -125,7 +125,7 @@ fretboardRange: { from: 1, to: 12 }
 
 ##### @param(labels: object)
 
-Fret number label is shown at the bottom left. You can hide this label or customize the prefix: \
+The fret number label is shown at the bottom left. You can hide this label or customize the prefix:
 
 ```js
 labels: {
