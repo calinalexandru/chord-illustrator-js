@@ -65,12 +65,10 @@ describe('chords optionals', () => {
     });
 
     saveMock('services/E-vertical', testChord.outerHTML);
-    expect(
-      testChord.querySelector('[data-name="fretTitle"]')
-    ).toBeTruthy();
+    expect(testChord.querySelector('[data-name="fretTitle"]')).toBeTruthy();
   });
 
-  test('open strings are auto set', () => {
+  test('open strings are auto set - open chord', () => {
     const testChord = ChordIllustrator.make({
       name: 'E',
       fingering: [
@@ -83,5 +81,55 @@ describe('chords optionals', () => {
     expect(
       testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
     ).toBe(4);
+  });
+
+  test('open strings are auto set - barre chord', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm',
+      fingering: [
+        { fret: 2, barre: { from: 1, to: 5 } },
+        { fret: 3, string: 2, finger: 2 },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+
+    saveMock('services/Bm-auto-set', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(1);
+  });
+
+  test('open strings are auto set - barre chord two', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm',
+      fingering: [
+        { fret: 2, barre: { from: 2, to: 5 } },
+        { fret: 3, string: 2, finger: 2 },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+
+    saveMock('services/Bm-auto-set-2', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(2);
+  });
+
+  test('open strings are auto set - barre chord three', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm',
+      fingering: [
+        { fret: 2, barre: { from: 3, to: 5 } },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+
+    saveMock('services/Bm-auto-set-3', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(3);
   });
 });

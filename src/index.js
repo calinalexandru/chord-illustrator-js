@@ -10,6 +10,7 @@ import getArrayRange from './util/getArrayRange';
 import getMaxFret from './util/getMaxFret';
 import stringsStatusTransform from './util/stringsStatusTransform';
 import getStringsStatusFromFingering from './util/getStringsStatusFromStrings';
+import getFingeringRangeFromBarre from './util/getFingeringRangeFromBarre';
 import isLinearChord from './predicates/isLinearChord';
 
 export default class Illustrator {
@@ -70,7 +71,17 @@ export default class Illustrator {
     const fingersParsedWithoutBarre = fingeringWithoutBarre(fingersParsed);
 
     const stringsStatus = stringsStatusTransform(
-      getStringsStatusFromFingering(fingering.map((finger) => finger.string)),
+      getStringsStatusFromFingering(
+        Array.from(
+          new Set([
+            ...fingersParsedWithoutBarre.map((finger) => finger.string),
+            ...getFingeringRangeFromBarre({
+              from: barreTransformed.from,
+              to: barreTransformed.to,
+            }),
+          ])
+        ).sort()
+      ),
       mutedStrings
     );
 
