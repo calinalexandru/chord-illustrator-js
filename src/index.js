@@ -12,6 +12,7 @@ import stringsStatusTransform from './util/stringsStatusTransform';
 import getStringsStatusFromFingering from './util/getStringsStatusFromStrings';
 import getFingeringRangeFromBarre from './util/getFingeringRangeFromBarre';
 import isLinearChord from './predicates/isLinearChord';
+import { GUITAR_STRINGS_STATUS } from './constants';
 
 export default class Illustrator {
   static setContainer(container) {
@@ -72,6 +73,7 @@ export default class Illustrator {
 
     const stringsStatus = stringsStatusTransform(
       getStringsStatusFromFingering(
+        GUITAR_STRINGS_STATUS,
         Array.from(
           new Set([
             ...fingersParsedWithoutBarre.map((finger) => finger.string),

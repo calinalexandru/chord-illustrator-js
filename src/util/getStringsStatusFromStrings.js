@@ -1,7 +1,5 @@
-import { GUITAR_STRINGS_STATUS } from '../constants';
-
-export default function getStringsStatusFromStrings(strings = []) {
-  return GUITAR_STRINGS_STATUS.map((stringStatus, key) =>
-    strings.indexOf(key + 1) !== -1 ? 'closed' : 'open'
-  ).reverse();
+export default function getStringsStatusFromStrings(status = [], strings = []) {
+  return status
+    .map((_, key) => (strings.indexOf(key + 1) !== -1 ? 'closed' : 'open'))
+    .reverse();
 }
