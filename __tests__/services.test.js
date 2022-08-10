@@ -21,25 +21,6 @@ describe('chords optionals', () => {
     });
 
     saveMock('services/Eadd9', testChord.outerHTML);
-    expect(testChord.tagName).toContain('svg');
-    expect(testChord.querySelector('[data-name="title"]').outerHTML).toContain(
-      'Eadd9'
-    );
-    expect(
-      testChord.querySelector('g[data-name="fingers-container"]')
-    ).toBeTruthy();
-    expect(
-      testChord.querySelector('g[data-name="guitar-strings-container"]')
-    ).toBeTruthy();
-    expect(
-      testChord.querySelector('g[data-name="guitar-neck-container"]')
-    ).toBeTruthy();
-    expect(
-      testChord.querySelector('g[data-name="frets-container"]')
-    ).toBeTruthy();
-    expect(
-      testChord.querySelector('g[data-name="barre-container"]')
-    ).toBeTruthy();
     expect(testChord.querySelector('g[data-name="finger-11-5"]')).toBeTruthy();
     expect(testChord.querySelector('g[data-name="finger-11-3"]')).toBeTruthy();
     expect(testChord.querySelector('g[data-name="finger-12-6"]')).toBeTruthy();
