@@ -68,6 +68,44 @@ describe('chords optionals', () => {
     expect(testChord.querySelector('[data-name="fretTitle"]')).toBeTruthy();
   });
 
+  test('open strings can be set - manually', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm-muted-strings',
+      mutedStrings: ['yes', 'open', 'yes', 'open', 'yes', 'open'],
+      fingering: [
+        { fret: 2, barre: { from: 3, to: 5 } },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+    saveMock('services/E-open-manual', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-muted-string"]').length
+    ).toBe(3);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(3);
+  });
+
+  test('open strings can be set - manually 2', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm-muted-strings-2',
+      mutedStrings: ['no', 'open', 'yes', 'open', 'yes', 'no'],
+      fingering: [
+        { fret: 2, barre: { from: 3, to: 5 } },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+    saveMock('services/E-open-manual', testChord.outerHTML);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-muted-string"]').length
+    ).toBe(2);
+    expect(
+      testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
+    ).toBe(2);
+  });
+
   test('open strings are auto set - open chord', () => {
     const testChord = ChordIllustrator.make({
       name: 'E',
