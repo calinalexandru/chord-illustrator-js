@@ -132,4 +132,36 @@ describe('chords optionals', () => {
       testChord.querySelectorAll('[data-name="neck-item-open-string"]').length
     ).toBe(3);
   });
+
+  test('name is not shown when omitted', () => {
+    const testChord = ChordIllustrator.make({
+      fingering: [
+        { fret: 2, barre: { from: 3, to: 5 } },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+    });
+
+    saveMock('services/nameless', testChord.outerHTML);
+    expect(testChord.querySelector('[data-name="title"]')).toBeNull();
+  });
+
+  test('label is not shown when false', () => {
+    const testChord = ChordIllustrator.make({
+      name: 'Bm-label-off',
+      fingering: [
+        { fret: 2, barre: { from: 3, to: 5 } },
+        { fret: 4, string: 3, finger: 3 },
+        { fret: 4, string: 4, finger: 4 },
+      ],
+      labels: {
+        fretNumber: { show: false },
+        title: { show: false },
+      },
+    });
+
+    saveMock('services/nameless', testChord.outerHTML);
+    expect(testChord.querySelector('[data-name="title"]')).toBeNull();
+    expect(testChord.querySelector('[data-name="fretTitle"]')).toBeNull();
+  });
 });

@@ -31,7 +31,7 @@ export default class Illustrator {
   }
 
   static make({
-    name,
+    name = false,
     fingering = {},
     fretboardRange = {},
     mutedStrings = [],
@@ -94,7 +94,7 @@ export default class Illustrator {
         showFretNumber={showFretNumber}
         showTitle={showTitle}
         frets={frets}
-        name={name || false}
+        name={name}
         maxFret={maxFret}
         fingering={fingersParsedWithoutBarre}
         barre={barreTransformed}
