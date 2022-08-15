@@ -1,9 +1,3 @@
 export default function getArrayRange({ from, to }) {
-  const out = [];
-  let key = 1;
-  for (let i = from; i <= to; i += 1) {
-    out.push(key);
-    key += 1;
-  }
-  return out;
+  return Array.from({length: to - from + 1}, (_, i) => i + 1);
 }

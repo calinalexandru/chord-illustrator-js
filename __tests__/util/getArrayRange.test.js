@@ -16,5 +16,8 @@ describe('getArrayRange', () => {
     expect(getArrayRange({ from: 6, to: 12 })).toMatchObject([
       1, 2, 3, 4, 5, 6, 7,
     ]);
+    expect(getArrayRange({ from: 3, to: 6 })).toMatchObject([
+      1, 2, 3, 4, 
+    ]);
   });
 });
